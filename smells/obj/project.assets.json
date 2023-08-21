@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\smells.csproj",
+      "projectUniqueName": "C:\\Users\\ozkal\\Source\\Repos\\rubenriseld\\smells\\smells\\smells.csproj",
       "projectName": "smells",
-      "projectPath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\smells.csproj",
+      "projectPath": "C:\\Users\\ozkal\\Source\\Repos\\rubenriseld\\smells\\smells\\smells.csproj",
       "packagesPath": "C:\\Users\\ozkal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\obj\\",
+      "outputPath": "C:\\Users\\ozkal\\Source\\Repos\\rubenriseld\\smells\\smells\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ozkal\\AppData\\Roaming\\NuGet\\NuGet.Config",

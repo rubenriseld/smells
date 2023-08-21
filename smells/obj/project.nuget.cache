@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "444jpuLnHvSzKDnzevq4VzrIaSaIv+18SHocy2N5kC8L1H2IChcXxiUE4NuVPfV7rhdINB7gCxS0PV4oynsEOA==",
+  "dgSpecHash": "fArjdlgpfkw0S/DFkMiLnFtCSlNXseV3niBAl4fSYN4rCELlMGSRZcn3ghX8Ns4H1Y1GHGxYSDOei6Zd0psXUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\smells.csproj",
+  "projectFilePath": "C:\\Users\\ozkal\\Source\\Repos\\rubenriseld\\smells\\smells\\smells.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
