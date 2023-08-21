@@ -33,31 +33,9 @@ class MainClass
 				currentGuessResult = HandleUserGuess(numbersToGuess, userGuess);
 				Console.WriteLine(currentGuessResult + "\n");
 			}
-
-			StreamReader sr = new StreamReader("HighScores.txt");
-			string line;
-			while ((line = sr.ReadLine()) != null)
-			{
-
-				
-				if (line.Contains(userName))
-				{
-
-					string[] old = line.Split("#&#");
-					int n = Convert.ToInt32(old[1]) + numberOfGuesses;
-					Console.WriteLine(n);
-				}
-			}
-			sr.Close();
-			//StreamWriter output = new StreamWriter("HighScores.txt", append: true);
-
-
-
-
-			//output.WriteLine(userName + "#&#" + numberOfGuesses);
-
-
-			//output.Close();
+			StreamWriter output = new StreamWriter("HighScores.txt", append: true);
+			output.WriteLine(userName + "#&#" + numberOfGuesses);
+			output.Close();
 			ShowHighScores();
 			Console.WriteLine("Correct, it took " + numberOfGuesses + " guesses\nContinue?");
 			string answer = Console.ReadLine();
@@ -66,7 +44,6 @@ class MainClass
 				continuePlaying = false;
 			}
 		}
-
 		static string GenerateNumbersToGuess() //siffran som ska gissas
 		{
 			Random numberGenerator = new Random();
@@ -119,8 +96,6 @@ class MainClass
 				string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None);
 				string name = nameAndScore[0];
 				int score = Convert.ToInt32(nameAndScore[1]);
-
-				//for each name count updatePlayedGames
 				PlayerData playerData = new PlayerData(name, score);
 				int position = playerHighScores.IndexOf(playerData);
 				if (position < 0)
@@ -155,16 +130,14 @@ class MainClass
 		public void Update(int guesses)
 		{
 			totalGuesses += guesses;
-
+			NumberOfGames++;
 		}
 		public double Avarage()
 		{
 			return (double)totalGuesses / NumberOfGames;
 		}
-		public void UpdateNumberOfGames()
-		{
-			NumberOfGames++;
-		}
+		public void UpdateNumberOfGames() { }
+
 		//public override bool Equals(Object p)
 		//{
 		//	return Name.Equals(((PlayerData)p).Name);
