@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace smells
 {
-	public class PlayerData
+	public class PlayerData : IPlayerData
 	{
 		
-			public string Name { get; private set; }
+			public string Name { get;  private set; }
 			public int NumberOfGames { get; private set; }
 			int totalGuesses;
 			public PlayerData(string name, int guesses)
@@ -27,14 +27,14 @@ namespace smells
 			{
 				return (double)totalGuesses / NumberOfGames;
 			}
-			//public override bool Equals(Object p)
-			//{
-			//	return Name.Equals(((PlayerData)p).Name);
-			//}
-			//public override int GetHashCode()
-			//{
-			//	return Name.GetHashCode();
-			//}
+			public override bool Equals(Object p)
+			{
+				return Name.Equals(((PlayerData)p).Name);
+			}
+			public override int GetHashCode()
+			{
+				return Name.GetHashCode();
+			}
 		}
 	}
 

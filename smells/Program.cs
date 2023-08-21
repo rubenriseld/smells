@@ -107,11 +107,11 @@ class MainClass
 					playerHighScores[position].Update(score);
 				}
 			}
-			playerHighScores.Sort((player1, player2) => player1.Avarage().CompareTo(player2.Avarage()));
-			Console.WriteLine("Player   games avarage");
+			playerHighScores.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
+			Console.WriteLine("Player  games avarage");
 			foreach (PlayerData player in playerHighScores)
 			{
-				Console.WriteLine(string.Format("{0, -9}{1,5:D}{2,9:F2}", player.Name, player.NumberOfGames, player.Avarage()));
+				Console.WriteLine(string.Format("{0, -9}{1,5:D}{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
 			}
 			streamReader.Close();
 		}
@@ -132,19 +132,17 @@ class MainClass
 			totalGuesses += guesses;
 			NumberOfGames++;
 		}
-		public double Avarage()
+		public double Average()
 		{
 			return (double)totalGuesses / NumberOfGames;
 		}
-		public void UpdateNumberOfGames() { }
-
-		//public override bool Equals(Object p)
-		//{
-		//	return Name.Equals(((PlayerData)p).Name);
-		//}
-		//public override int GetHashCode()
-		//{
-		//	return Name.GetHashCode();
-		//}
+		public override bool Equals(Object p)//tillsammans me indexOf
+		{
+			return Name.Equals(((PlayerData)p).Name); 
+		}
+		public override int GetHashCode()  //här highscore "summering"? kolla me sebbeboii
+		{
+			return Name.GetHashCode();
+		}
 	}
 }

@@ -7,6 +7,6 @@ namespace CowsAndBullsTest
 	{
 		[Fact]
 		public void AvarageOf5Times3Is5()
-		=> new PlayerData("", 15).Avarage().Should().Be(5.00);
+		=> new MockPlayerData().Avarage().Should().Be(5.00);
 	}
 }

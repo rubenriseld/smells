@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace smells
+{
+	public class MockPlayerData :IPlayerData
+	{
+		public string Name {get;set;
+}		public int NumberOfGames { get; set; }
+		int numberOfGuesses;
+		public MockPlayerData()
+		{
+			Name = "user1";
+			NumberOfGames = 3;
+			numberOfGuesses = 15;
+		}
+
+		public void Update(int guesses)
+		{
+			
+		}
+
+		public double Avarage()
+		{
+			return (double)numberOfGuesses/NumberOfGames;
+		}
+	}
+}
