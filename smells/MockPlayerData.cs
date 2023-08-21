@@ -18,9 +18,17 @@ namespace smells
 			numberOfGuesses = 15;
 		}
 
-		public void Update(int guesses)
+		public void Update(int guesses) => throw new NotImplementedException();
+		
+		public int UpdateGuesses(int guesses)
 		{
-			
+			numberOfGuesses += guesses;
+			return numberOfGuesses;
+		}
+		public int UpdateNumberOfGames()
+		{
+			NumberOfGames++;
+			return NumberOfGames;
 		}
 
 		public double Avarage()
