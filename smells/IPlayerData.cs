@@ -11,6 +11,6 @@ namespace smells
 		string Name { get; }
 		int NumberOfGames { get; }
 		public void Update(int guesses);
-		public double Avarage();
+		public double Average();
 	}
 }

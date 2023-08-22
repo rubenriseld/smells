@@ -31,7 +31,7 @@ namespace smells
 			return NumberOfGames;
 		}
 
-		public double Avarage()
+		public double Average()
 		{
 			return (double)numberOfGuesses/NumberOfGames;
 		}

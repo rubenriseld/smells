@@ -7,8 +7,8 @@ namespace CowsAndBullsTest
 	{
 		MockPlayerData mockPlayerData= new MockPlayerData();
 		[Fact]
-		public void AvarageOf5Times3Is5()
-		=> mockPlayerData.Avarage().Should().Be(5.00);
+		public void AverageOf5Times3Is5()
+		=> mockPlayerData.Average().Should().Be(5.00);
 		[Fact]
 		public void UpdateNumberOfGuessesShouldBe17()
 			=> mockPlayerData.UpdateGuesses(2).Should().Be(17);

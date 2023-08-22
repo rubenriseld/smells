@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace smells
 {
 	public class PlayerData : IPlayerData
-	{
-		
+	{		
 			public string Name { get;  private set; }
 			public int NumberOfGames { get; private set; }
 			int totalGuesses;
@@ -23,7 +22,7 @@ namespace smells
 				totalGuesses += guesses;
 				NumberOfGames++;
 			}
-			public double Avarage()
+			public double Average()
 			{
 				return (double)totalGuesses / NumberOfGames;
 			}
