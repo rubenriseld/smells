@@ -10,7 +10,7 @@ class MainClass
 	public static void Main(string[] args)
 	{
 		bool BackToMenu = true;
-		
+
 		Console.WriteLine("Enter your user name:\n");
 		string userName = Console.ReadLine();
 		CowsAndBulls cowsBulls = new CowsAndBulls();
@@ -18,28 +18,26 @@ class MainClass
 		{
 			bool continuePlaying = true; //fortsätt spela
 			Console.WriteLine("Choose what to play\n\t[1] Cows&Bulls \n\t[2] Second Game\n\t[E] Exit");
-			int menuChoice = Convert.ToInt32(Console.ReadLine());
+			string menuChoice =Console.ReadLine();
 			switch (menuChoice)
 			{
-				case 1:
+				case "1":
 					while (continuePlaying)
 					{
-					
 						cowsBulls.RunCowsAndBulls(userName);
 						Console.WriteLine("New game? y/n\n\nBack to Menu [M]");
 						if (Console.ReadLine() == "M") continuePlaying= false;
-
 					}
 					break;
-				case 2:
+				case "2":
 					break;
-				case 'E':
+				case "E":
 					BackToMenu= false;
 					break;
 			}
 
-		
-			
+
+
 			//string numbersToGuess = GenerateNumbersToGuess(); //skapa siffra som ska gissas
 			//Console.WriteLine("New game: \n");
 			//Console.WriteLine("For practice, number is: " + numbersToGuess + "\n");
@@ -63,11 +61,11 @@ class MainClass
 			//output.Close();
 			//ShowHighScores();
 			//Console.WriteLine("Correct, it took " + numberOfGuesses + " guesses\nContinue?");
-			string answer = Console.ReadLine();
-			if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
-			{
-				continuePlaying = false;
-			}
+			//string answer = Console.ReadLine();
+			//if (answer != null && answer != "" && answer.Substring(0, 1) == "n")
+			//{
+			//	continuePlaying = false;
+			//}
 		}
 
 		//static void CowsAndBulls()
@@ -139,65 +137,66 @@ class MainClass
 		//	}
 		//	return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
 		//}
-		static void ShowHighScores()
-		{
+		//	static void ShowHighScores()
+		//	{
 
 
-			StreamReader streamReader = new StreamReader("HighScores.txt"); //hämta data från textfil me "scores"
-			List<PlayerData> playerHighScores = new List<PlayerData>();
-			string line; //
-			while ((line = streamReader.ReadLine()) != null)
-			{
-				string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None);
-				string name = nameAndScore[0];
-				int score = Convert.ToInt32(nameAndScore[1]);
-				PlayerData playerData = new PlayerData(name, score);
-				int position = playerHighScores.IndexOf(playerData);
-				if (position < 0)
-				{
-					playerHighScores.Add(playerData);
-				}
-				else
-				{
-					playerHighScores[position].Update(score);
-				}
-			}
-			playerHighScores.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
-			Console.WriteLine("Player  games avarage");
-			foreach (PlayerData player in playerHighScores)
-			{
-				Console.WriteLine(string.Format("{0, -9}{1,5:D}{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
-			}
-			streamReader.Close();
-		}
+		//		StreamReader streamReader = new StreamReader("HighScores.txt"); //hämta data från textfil me "scores"
+		//		List<PlayerData> playerHighScores = new List<PlayerData>();
+		//		string line; //
+		//		while ((line = streamReader.ReadLine()) != null)
+		//		{
+		//			string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None);
+		//			string name = nameAndScore[0];
+		//			int score = Convert.ToInt32(nameAndScore[1]);
+		//			PlayerData playerData = new PlayerData(name, score);
+		//			int position = playerHighScores.IndexOf(playerData);
+		//			if (position < 0)
+		//			{
+		//				playerHighScores.Add(playerData);
+		//			}
+		//			else
+		//			{
+		//				playerHighScores[position].Update(score);
+		//			}
+		//		}
+		//		playerHighScores.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
+		//		Console.WriteLine("Player  games avarage");
+		//		foreach (PlayerData player in playerHighScores)
+		//		{
+		//			Console.WriteLine(string.Format("{0, -9}{1,5:D}{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
+		//		}
+		//		streamReader.Close();
+		//	}
+		//}
+		//class PlayerData
+		//{
+		//	public string Name { get; private set; }
+		//	public int NumberOfGames { get; private set; }
+		//	int totalGuesses;
+		//	public PlayerData(string name, int guesses)
+		//	{
+		//		Name = name;
+		//		NumberOfGames = 1;
+		//		this.totalGuesses = guesses;
+		//	}
+		//	public void Update(int guesses)
+		//	{
+		//		totalGuesses += guesses;
+		//		NumberOfGames++;
+		//	}
+		//	public double Average()
+		//	{
+		//		return (double)totalGuesses / NumberOfGames;
+		//	}
+		//	public override bool Equals(Object p)//tillsammans me indexOf
+		//	{
+		//		return Name.Equals(((PlayerData)p).Name); 
+		//	}
+		//	public override int GetHashCode()  //här highscore "summering"? kolla me sebbeboii
+		//	{
+		//		return Name.GetHashCode();
+		//	}
+		//}
 	}
-	//class PlayerData
-	//{
-	//	public string Name { get; private set; }
-	//	public int NumberOfGames { get; private set; }
-	//	int totalGuesses;
-	//	public PlayerData(string name, int guesses)
-	//	{
-	//		Name = name;
-	//		NumberOfGames = 1;
-	//		this.totalGuesses = guesses;
-	//	}
-	//	public void Update(int guesses)
-	//	{
-	//		totalGuesses += guesses;
-	//		NumberOfGames++;
-	//	}
-	//	public double Average()
-	//	{
-	//		return (double)totalGuesses / NumberOfGames;
-	//	}
-	//	public override bool Equals(Object p)//tillsammans me indexOf
-	//	{
-	//		return Name.Equals(((PlayerData)p).Name); 
-	//	}
-	//	public override int GetHashCode()  //här highscore "summering"? kolla me sebbeboii
-	//	{
-	//		return Name.GetHashCode();
-	//	}
-	//}
 }
