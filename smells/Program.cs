@@ -9,32 +9,43 @@ class MainClass
 {
 	public static void Main(string[] args)
 	{
-		bool BackToMenu = true;
+		UI userInterface = new UI();
+		userInterface.Menu();
+		
+		
+		
+		
+		
+		//bool BackToMenu = true;
 
-		Console.WriteLine("Enter your user name:\n");
-		string userName = Console.ReadLine();
-		CowsAndBulls cowsBulls = new CowsAndBulls();
-		while (BackToMenu)
-		{
-			bool continuePlaying = true; //fortsätt spela
-			Console.WriteLine("Choose what to play\n\t[1] Cows&Bulls \n\t[2] Second Game\n\t[E] Exit");
-			string menuChoice =Console.ReadLine();
-			switch (menuChoice)
-			{
-				case "1":
-					while (continuePlaying)
-					{
-						cowsBulls.RunCowsAndBulls(userName);
-						Console.WriteLine("New game? y/n\n\nBack to Menu [M]");
-						if (Console.ReadLine() == "M") continuePlaying= false;
-					}
-					break;
-				case "2":
-					break;
-				case "E":
-					BackToMenu= false;
-					break;
-			}
+		//Console.WriteLine("Enter your user name:\n");
+		//string userName = Console.ReadLine();
+		//CowsAndBulls cowsBulls = new CowsAndBulls();
+		//while (BackToMenu)
+		//{
+		//	bool continuePlaying = true; //fortsätt spela
+		//	Console.WriteLine("Choose what to play\n\t[1] Cows&Bulls \n\t[2] Second Game\n\t[E] Exit");
+		//	string menuChoice =Console.ReadLine();
+		//	if (menuChoice=="1")
+		//	{
+
+		//	}
+		//	switch (menuChoice)
+		//	{
+		//		case "1":
+		//			while (continuePlaying)
+		//			{
+		//				cowsBulls.RunCowsAndBulls(userName);
+		//				Console.WriteLine("New game? y/n\n\nBack to Menu [M]");
+		//				if (Console.ReadLine() == "M") continuePlaying= false;
+		//			}
+		//			break;
+		//		case "2":
+		//			break;
+		//		case "E":
+		//			BackToMenu= false;
+		//			break;
+		//	}
 
 
 
@@ -199,4 +210,4 @@ class MainClass
 		//	}
 		//}
 	}
-}
+
