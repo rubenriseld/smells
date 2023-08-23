@@ -9,21 +9,28 @@ namespace smells
 {
 	public class HighScore
 	{
+		IUI ui;
+		public HighScore()
+		{
+			ui = new UI();
+		}
 		public void AddHighScore(string userName, int numberOfGuesses)
 		{
 			StreamWriter streamWriter = new StreamWriter("HighScores.txt", append: true);
 			streamWriter.WriteLine(userName + "#&#" + numberOfGuesses);
 			streamWriter.Close();
+
 		}
 		public void PrintHighScores()
 		{
 			List<PlayerData> playerHighScores = GetHighScores("Highscores");		
 			playerHighScores.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
-			Console.WriteLine("Player   games avarage");
+			ui.PrintToConsole("Player\t\t  Games\t  Avarage\n\t______\t\t  _____\t  _______");
 			foreach (PlayerData player in playerHighScores)
 			{
-				Console.WriteLine(string.Format("{0, -9}{1,5:D}{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
+				ui.PrintToConsole(string.Format("{0, -9}\t{1,5:D}\t{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
 			}
+			ui.PrintToConsole("_________________________________");
 		}
 		public List<PlayerData> GetHighScores(string game)
 		{

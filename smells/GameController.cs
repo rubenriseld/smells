@@ -11,15 +11,17 @@ namespace smells
 		private HighScore highscores;
 		private CowsAndBulls cowsAndBulls;
 		private IUI ui;
+		string userName { get; set; }
+		string menuChoice { get; set; }
 		public GameController(CowsAndBulls cab, IUI ui, HighScore highscores)
 		{
 			cowsAndBulls= cab;
 			this.ui= ui;
 			this.highscores = highscores;
+			userName="";
+			menuChoice="";
 		}
 
-		string userName;
-		string menuChoice;
 		public void Menu()
 		{
 			bool ShowMenu = true;
@@ -28,6 +30,7 @@ namespace smells
 
 			while (ShowMenu)
 			{
+				ui.ClearConsole();
 				ui.PrintToConsole($"\n\tWelcome {userName}! \n\tChoose what to play\n\t[1] Cows&Bulls \n\t[2] Second Game\n\t[E] Exit");
 				menuChoice = ui.ReadFromConsole();
 				HandleMenuChoice();
@@ -44,8 +47,8 @@ namespace smells
 					int gameResult = cowsAndBulls.RunGame();
 					highscores.AddHighScore(userName,gameResult);
 					highscores.PrintHighScores();
-					ui.PrintToConsole("New game [y]\n\nBack to Menu [M]");
-					if (ui.ReadFromConsole() == "m".ToUpper()) continuePlaying= false;
+					ui.PrintToConsole("New game [y]\tBack to Menu [M]");
+					if (ui.ReadFromConsole() == "m" ||ui.ReadFromConsole() == "M") continuePlaying= false;
 				}
 			}
 			if (menuChoice=="2")
