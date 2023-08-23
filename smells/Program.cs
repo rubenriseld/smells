@@ -9,8 +9,20 @@ class MainClass
 {
 	public static void Main(string[] args)
 	{
-		UI userInterface = new UI();
-		userInterface.Menu();
+		IUI userInterface2 = new UI(); //will be in controller as param
+									  
+		
+		HighScore highScores= new HighScore();
+		CowsAndBulls cows = new CowsAndBulls();
+		GameController gc = new GameController(cows, userInterface2, highScores);
+
+		gc.Menu();
+
+		//ConsoleInput input = new ConsoleInput();
+		//ConsoleDisplay displayUnit = new ConsoleDisplay();
+
+
+		
 		
 		
 		

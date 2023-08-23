@@ -6,46 +6,26 @@ using System.Threading.Tasks;
 
 namespace smells
 {
-	public class UI
+	public class UI :IUI
 	{
-		string userName;
-		string menuChoice;
-		CowsAndBulls cowsandbulls = new CowsAndBulls();
-		public void Menu()
+		public void PrintToConsole(string s)
 		{
-			bool ShowMenu = true;
-			Console.Write("\tEnter your user name:\n\t");
-			userName = Console.ReadLine();
-
-			while (ShowMenu)
-			{
-				Console.WriteLine($"\n\tWelcome {userName}! \n\tChoose what to play\n\t[1] Cows&Bulls \n\t[2] Second Game\n\t[E] Exit");
-				menuChoice = Console.ReadLine();
-				HandleMenuChoice();
-				if (menuChoice== "E") ShowMenu= false;
-			}
+			Console.Write(s+"\n\t");
 		}
-		public void HandleMenuChoice()
+		public string ReadFromConsole()
 		{
-			bool continuePlaying = true; //fortsätt spela
-			if (menuChoice=="1")
-			{
-				while (continuePlaying)
-				{
-					cowsandbulls.RunCowsAndBulls(userName);
-					Console.WriteLine("New game? y/n\n\nBack to Menu [M]");
-					if (Console.ReadLine() == "M") continuePlaying= false;
-				}
-			}
-			if (menuChoice=="2")
-			{
-				while (continuePlaying) { }
-			}
-
+			return Console.ReadLine().ToString();
 		}
-		public void PrintHighScores()
+		public void ExitConsole()
 		{
-
+			System.Environment.Exit(0);
 		}
+		public void ClearConsole()
+		{
+			Console.Clear();
+		}
+
+
+
 	}
 }

@@ -9,6 +9,7 @@ namespace smells
 {
 	public class CowsAndBulls
 	{
+
 		public void RunCowsAndBulls(string userName)
 		{
 			string numbersToGuess = GenerateNumbersToGuess();
