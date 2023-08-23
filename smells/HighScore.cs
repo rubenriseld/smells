@@ -17,7 +17,7 @@ namespace smells
 		}
 		public void PrintHighScores()
 		{
-			List<PlayerData> playerHighScores = GetHighScores();		
+			List<PlayerData> playerHighScores = GetHighScores("Highscores");		
 			playerHighScores.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
 			Console.WriteLine("Player   games avarage");
 			foreach (PlayerData player in playerHighScores)
@@ -25,9 +25,11 @@ namespace smells
 				Console.WriteLine(string.Format("{0, -9}{1,5:D}{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
 			}
 		}
-		public List<PlayerData> GetHighScores()
+		public List<PlayerData> GetHighScores(string game)
 		{
-			StreamReader streamReader = new StreamReader("HighScores.txt");
+			
+
+			StreamReader streamReader = new StreamReader($"{game}.txt");
 			List<PlayerData> playerHighScores = new List<PlayerData>();
 			string line;
 			while ((line = streamReader.ReadLine()) != null)

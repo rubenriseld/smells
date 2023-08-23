@@ -3,38 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using smells;
 
 namespace smells
 {
-	public class CowsAndBulls
+	public class CowsAndBulls : IGame
 	{
-
-		public void RunCowsAndBulls(string userName)
+		string numbersToGuess;
+		string userGuess;
+		private IUI ui;
+		public CowsAndBulls()
 		{
-			string numbersToGuess = GenerateNumbersToGuess();
-			Console.WriteLine("New game: \n");
-			Console.WriteLine("For practice, number is: " + numbersToGuess + "\n");
-			string userGuess = Console.ReadLine();
+			ui = new UI();
+		}
+		public int RunGame()
+		{
+			numbersToGuess = GenerateNumbersToGuess();
+			ui.PrintToConsole("New game: \n");
+			ui.PrintToConsole("For practice, number is: " + numbersToGuess + "\n");
+			userGuess = ui.ReadFromConsole();
 			int numberOfGuesses = 1;
-			string currentGuessResult = HandleUserGuess(numbersToGuess, userGuess);
-			Console.WriteLine(currentGuessResult + "\n");
+			string currentGuessResult = HandleUserGuess();
+			ui.PrintToConsole(currentGuessResult + "\n");
 
 			string correctGuessResult = "BBBB,";
 			while (currentGuessResult != correctGuessResult)
 			{
 				numberOfGuesses++;
-				userGuess = Console.ReadLine();
-				Console.WriteLine(userGuess + "\n");
-				currentGuessResult = HandleUserGuess(numbersToGuess, userGuess);
-				Console.WriteLine(currentGuessResult + "\n");
+				userGuess = ui.ReadFromConsole();
+				ui.PrintToConsole(userGuess + "\n");
+				currentGuessResult = HandleUserGuess();
+				ui.PrintToConsole(currentGuessResult + "\n");
 			}
-			Console.WriteLine("Correct, it took " + numberOfGuesses + " guesses\n");
-			HighScore hs = new HighScore();
-			hs.AddHighScore(userName, numberOfGuesses);
-			hs.PrintHighScores();
+
+			ui.PrintToConsole("Correct, it took " + numberOfGuesses + " guesses\n");
+			return numberOfGuesses;
+
 		}
-		static string GenerateNumbersToGuess() //siffran som ska gissas
+		public string GenerateNumbersToGuess()
 		{
 			Random numberGenerator = new Random();
 			string numbersToGuess = "";
@@ -51,7 +56,8 @@ namespace smells
 			}
 			return numbersToGuess;
 		}
-		static string HandleUserGuess(string numbersToGuess, string userGuess)
+
+		public string HandleUserGuess()
 		{
 			int numberOfBulls = 0;
 			int numberOfCows = 0;
@@ -74,6 +80,12 @@ namespace smells
 				}
 			}
 			return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
+		}
+
+
+		public void ShowHighscores()
+		{
+
 		}
 	}
 }

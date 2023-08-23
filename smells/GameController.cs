@@ -41,7 +41,9 @@ namespace smells
 			{
 				while (continuePlaying)
 				{
-					cowsAndBulls.RunCowsAndBulls(userName);
+					int gameResult = cowsAndBulls.RunGame();
+					highscores.AddHighScore(userName,gameResult);
+					highscores.PrintHighScores();
 					ui.PrintToConsole("New game [y]\n\nBack to Menu [M]");
 					if (ui.ReadFromConsole() == "m".ToUpper()) continuePlaying= false;
 				}

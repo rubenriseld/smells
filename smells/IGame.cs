@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace smells
 {
-	internal class cabtemp
+	internal interface IGame
 	{
+		int RunGame();
+		string GenerateNumbersToGuess();
+		string HandleUserGuess();
 	}
 }

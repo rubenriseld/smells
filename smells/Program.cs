@@ -9,17 +9,12 @@ class MainClass
 {
 	public static void Main(string[] args)
 	{
-		IUI userInterface2 = new UI(); //will be in controller as param
-									  
-		
+		IUI userInterface = new UI(); 
 		HighScore highScores= new HighScore();
-		CowsAndBulls cows = new CowsAndBulls();
-		GameController gc = new GameController(cows, userInterface2, highScores);
+		CowsAndBulls cowsAndBulls = new CowsAndBulls();
+		GameController gameController = new GameController(cowsAndBulls, userInterface, highScores);
+		gameController.Menu();
 
-		gc.Menu();
-
-		//ConsoleInput input = new ConsoleInput();
-		//ConsoleDisplay displayUnit = new ConsoleDisplay();
 
 
 		
