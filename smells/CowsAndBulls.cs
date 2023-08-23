@@ -11,9 +11,11 @@ namespace smells
 		string numbersToGuess;
 		string userGuess;
 		private IUI ui;
+		//private HighScore hs;
 		public CowsAndBulls()
 		{
 			ui = new UI();
+			//hs = new HighScore();
 		}
 		public int RunGame()
 		{
@@ -82,10 +84,5 @@ namespace smells
 			return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
 		}
 
-
-		public void ShowHighscores()
-		{
-
-		}
 	}
 }

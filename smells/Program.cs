@@ -9,11 +9,20 @@ class MainClass
 {
 	public static void Main(string[] args)
 	{
-		IUI userInterface = new UI();
-		HighScore highScores = new HighScore();
+
+		IUI userInterface = new UI(); 
+		HighScore cowsAndBullshighScores = new HighScore();
 		CowsAndBulls cowsAndBulls = new CowsAndBulls();
-		GameController gameController = new GameController(cowsAndBulls, userInterface, highScores);
+		GameController gameController = new GameController(cowsAndBulls, userInterface, cowsAndBullshighScores);
 		gameController.Menu();
+
+
+
+		//gameController.AddUI(userInterface)
+		//	.AddGame(cowsAndBulls)
+		//	.AddGame(magicNumbers)
+
+		//gameController.Run();
 	}
 }
 

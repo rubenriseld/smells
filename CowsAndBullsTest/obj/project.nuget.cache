@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GnWXQBc/0+4DH79xpZHwPF8TC9O2B/mReEEAG/x5p3iGEeaiVFPpayekZO15jlwuRvdwTOAPsuSyjw2k7CzjMA==",
+  "dgSpecHash": "sBO9HGwQx8r4s7Y5E+dVonUaP9SJ3/eX0tvEjXq+G1La7pKN9LaIDxfasSUmEXVDg5lRZkBy8v1qZP6gyoVC9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\CowsAndBullsTest\\CowsAndBullsTest.csproj",
+  "projectFilePath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\CowsAndBullsTest\\Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ozkal\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\ozkal\\.nuget\\packages\\fluentassertions\\6.11.0\\fluentassertions.6.11.0.nupkg.sha512",

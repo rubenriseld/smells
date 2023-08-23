@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "smells", "smells\smells.csproj", "{7653FB4D-72FB-472B-B7E1-D50BD460FB3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CowsAndBullsTest", "CowsAndBullsTest\CowsAndBullsTest.csproj", "{D611B4E7-FA09-49F0-8785-50879EF9259C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "CowsAndBullsTest\Tests.csproj", "{D611B4E7-FA09-49F0-8785-50879EF9259C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

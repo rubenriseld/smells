@@ -6275,9 +6275,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\CowsAndBullsTest\\CowsAndBullsTest.csproj",
-      "projectName": "CowsAndBullsTest",
-      "projectPath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\CowsAndBullsTest\\CowsAndBullsTest.csproj",
+      "projectUniqueName": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\CowsAndBullsTest\\Tests.csproj",
+      "projectName": "Tests",
+      "projectPath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\CowsAndBullsTest\\Tests.csproj",
       "packagesPath": "C:\\Users\\ozkal\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\CowsAndBullsTest\\obj\\",
       "projectStyle": "PackageReference",

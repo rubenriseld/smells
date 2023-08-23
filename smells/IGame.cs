@@ -11,5 +11,6 @@ namespace smells
 		int RunGame();
 		string GenerateNumbersToGuess();
 		string HandleUserGuess();
+		//HighScore highscore();
 	}
 }

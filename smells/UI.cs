@@ -24,8 +24,5 @@ namespace smells
 		{
 			Console.Clear();
 		}
-
-
-
 	}
 }

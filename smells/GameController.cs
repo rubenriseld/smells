@@ -21,7 +21,6 @@ namespace smells
 			userName="";
 			menuChoice="";
 		}
-
 		public void Menu()
 		{
 			bool ShowMenu = true;
@@ -31,7 +30,7 @@ namespace smells
 			while (ShowMenu)
 			{
 				ui.ClearConsole();
-				ui.PrintToConsole($"\n\tWelcome {userName}! \n\tChoose what to play\n\t[1] Cows&Bulls \n\t[2] Second Game\n\t[E] Exit");
+				ui.PrintToConsole($"\n\tWelcome {userName}! \n\tChoose what to play\n\t[1] CowsAndBulls&Bulls \n\t[2] Second Game\n\t[E] Exit");
 				menuChoice = ui.ReadFromConsole();
 				HandleMenuChoice();
 				if (menuChoice.ToUpper()== "E") ui.ExitConsole();
@@ -45,7 +44,7 @@ namespace smells
 				while (continuePlaying)
 				{
 					int gameResult = cowsAndBulls.RunGame();
-					highscores.AddHighScore(userName,gameResult);
+					highscores.AddHighScore(userName, gameResult);
 					highscores.PrintHighScores();
 					ui.PrintToConsole("New game [y]\tBack to Menu [M]");
 					if (ui.ReadFromConsole() == "m" ||ui.ReadFromConsole() == "M") continuePlaying= false;
