@@ -9,16 +9,15 @@ namespace smells
 {
     public class GameController //meny, "Länk" till alla spel o menyval, skriver ut o läser från console mha ui
 	{
-		private HighScore highscores;
+		//private HighScore highscores;
 		private CowsAndBulls cowsAndBulls;
 		private IUI ui;
 		string userName { get; set; }
 		string menuChoice { get; set; }
-		public GameController(CowsAndBulls cab, IUI ui, HighScore highscores)
+		public GameController(CowsAndBulls cab, IUI ui)
 		{
 			cowsAndBulls= cab;
 			this.ui= ui;
-			this.highscores = highscores;
 			userName="";
 			menuChoice="";
 		}
@@ -44,9 +43,8 @@ namespace smells
 			{
 				while (continuePlaying)
 				{
-					int gameResult = cowsAndBulls.RunGame();
-					highscores.AddHighScore(userName, gameResult);
-					highscores.PrintHighScores();
+					cowsAndBulls.RunGame(userName);
+					
 					ui.PrintToConsole("New game [y]\tBack to Menu [M]");
 					if (ui.ReadFromConsole() == "m" ||ui.ReadFromConsole() == "M") continuePlaying= false;
 				}

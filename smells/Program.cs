@@ -12,9 +12,8 @@ class MainClass
 	{
 
 		IUI userInterface = new UI(); 
-		HighScore cowsAndBullshighScores = new HighScore();
 		CowsAndBulls cowsAndBulls = new CowsAndBulls();
-		GameController gameController = new GameController(cowsAndBulls, userInterface, cowsAndBullshighScores);
+		GameController gameController = new GameController(cowsAndBulls, userInterface);
 		gameController.Menu();
 
 

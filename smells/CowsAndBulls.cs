@@ -12,13 +12,13 @@ namespace smells
 		string numbersToGuess;
 		string userGuess;
 		private IUI ui;
-		//private HighScore hs;
+		public HighScore highscore { get; set; }
 		public CowsAndBulls()
 		{
 			ui = new UI();
-			//hs = new HighScore();
+			highscore = new HighScore("HighScoresCAB");
 		}
-		public int RunGame()
+		public void RunGame(string userName)
 		{
 			numbersToGuess = GenerateNumbersToGuess();
 			ui.PrintToConsole("New game: \n");
@@ -37,10 +37,9 @@ namespace smells
 				currentGuessResult = HandleUserGuess();
 				ui.PrintToConsole(currentGuessResult + "\n");
 			}
-
+			highscore.AddHighScore(userName, numberOfGuesses);
+			highscore.PrintHighScores();
 			ui.PrintToConsole("Correct, it took " + numberOfGuesses + " guesses\n");
-			return numberOfGuesses;
-
 		}
 		public string GenerateNumbersToGuess()
 		{
