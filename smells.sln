@@ -5,7 +5,14 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "smells", "smells\smells.csproj", "{7653FB4D-72FB-472B-B7E1-D50BD460FB3F}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "CowsAndBullsTest\Tests.csproj", "{D611B4E7-FA09-49F0-8785-50879EF9259C}"
+=======
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{211B9738-B059-43FC-A61C-678CE0AAB35D}"
+	ProjectSection(SolutionItems) = preProject
+		Test.cs = Test.cs
+	EndProjectSection
+>>>>>>> 0bb7200f8de9748201242509e9b461e6b81d3f11
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
