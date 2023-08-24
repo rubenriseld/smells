@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using smells.Interfaces;
 
 namespace smells
 {
-	public class PlayerData : IPlayerData
+    public class PlayerData : IPlayerData
 	{
 		public string Name { get; private set; }
 		public int NumberOfGames { get; private set; }

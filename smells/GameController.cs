@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using smells.Interfaces;
 
 namespace smells
 {
-	public class GameController //meny, "Länk" till alla spel o menyval, skriver ut o läser från console mha ui
+    public class GameController //meny, "Länk" till alla spel o menyval, skriver ut o läser från console mha ui
 	{
 		private HighScore highscores;
 		private CowsAndBulls cowsAndBulls;

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using smells.Interfaces;
 
 namespace smells
 {
-	public class CowsAndBulls : IGame
+    public class CowsAndBulls : IGame
 	{
 		string numbersToGuess;
 		string userGuess;
