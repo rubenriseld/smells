@@ -47,8 +47,8 @@ namespace smells
 
                 }
 				menuChoice = ui.ReadFromConsole();
-				HandleMenuChoice();
 				if (menuChoice.ToUpper()== "E") ui.ExitConsole();
+				HandleMenuChoice();
 			}
 		}
 		public void HandleMenuChoice()
@@ -77,8 +77,10 @@ namespace smells
 				while (continuePlaying)
 				{
 					games[choice].RunGame(userName);
-                    ui.PrintToConsole("New game [y]\tBack to Menu [M]");
-					if (ui.ReadFromConsole() == "m" || ui.ReadFromConsole() == "M") continuePlaying = false;
+
+					ui.PrintToConsole("New game [y]\tBack to Menu [M]");
+					menuChoice = ui.ReadFromConsole();
+					if (menuChoice.ToUpper() == "M") continuePlaying = false;
 				}
 			}
 			else
