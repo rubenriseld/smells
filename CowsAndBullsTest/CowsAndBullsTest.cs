@@ -19,5 +19,14 @@ namespace Tests
 		[Fact]
 		public void RightNumbersWrongPlaceShouldReturnCommaCCC()
 		=> mockData.HandleUserGuess("8725").Should().Be(",CCCC");
+
+		[Fact]
+		public void NumberOfGuessesShouldIncrease()
+		{
+
+		}
+		[Fact]
+		public void FaultyNumbers5537ShouldBe5637()
+		=> mockData.GenerateNumbersToGuess().Should().Be("5637");
 	}
 }
