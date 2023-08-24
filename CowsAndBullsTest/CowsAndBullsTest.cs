@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Tests
 {
-	internal class CowsAndBullsTest
-	{
-		//[Fact]
-		//public void AverageOf5Times3Is5()
-		//=> mockPlayerData.Average().Should().Be(5.00);
-	}
+	//internal class CowsAndBullsTest
+	//{
+	//	[Fact]
+	//	//public void AverageOf5Times3Is5()
+	//	//=> mockPlayerData.Average().Should().Be(5.00);
+	//}
 }

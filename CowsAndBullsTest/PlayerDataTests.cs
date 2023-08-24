@@ -1,5 +1,6 @@
 using FluentAssertions;
 using smells;
+using smells.MockObjects;
 
 namespace CowsAndBullsTest
 {
