@@ -1,4 +1,6 @@
-﻿using smells;
+﻿using FluentAssertions;
+using smells;
+using smells.MockObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +9,15 @@ using System.Threading.Tasks;
 
 namespace Tests
 {
-	//internal class CowsAndBullsTest
-	//{
-	//	[Fact]
-	//	//public void AverageOf5Times3Is5()
-	//	//=> mockPlayerData.Average().Should().Be(5.00);
-	//}
+	public class CowsAndBullsTest
+	{
+		MockCowsAndBullsData mockData= new MockCowsAndBullsData();
+		[Fact]
+		public void ThreeCorrectNumbersShouldEqualBBBcomma()
+		=> mockData.HandleUserGuess("5279").Should().Be("BBB,");
+
+		[Fact]
+		public void RightNumbersWrongPlaceShouldReturnCommaCCC()
+		=> mockData.HandleUserGuess("8725").Should().Be(",CCCC");
+	}
 }
