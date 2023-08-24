@@ -11,7 +11,9 @@ namespace smells
 	{
 		string numbersToGuess;
 		string userGuess;
-		public string Name { get; set; }
+        public HighScore highscore { get; set; }
+
+        public string Name { get; set; }
 
         private IUI ui;
 		//private HighScore hs;
@@ -19,9 +21,10 @@ namespace smells
 		{
 			ui = new UI();
             Name = "Cows and Bulls";
-			//hs = new HighScore();
-		}
-		public int RunGame()
+            highscore = new HighScore("HighScoresCAB");
+
+        }
+        public void RunGame(string userName)
 		{
 			numbersToGuess = GenerateNumbersToGuess();
 			ui.PrintToConsole("New game: \n");
@@ -40,10 +43,9 @@ namespace smells
 				currentGuessResult = HandleUserGuess();
 				ui.PrintToConsole(currentGuessResult + "\n");
 			}
-
+			highscore.AddHighScore(userName, numberOfGuesses);
+			highscore.PrintHighScores();
 			ui.PrintToConsole("Correct, it took " + numberOfGuesses + " guesses\n");
-			return numberOfGuesses;
-
 		}
 		public string GenerateNumbersToGuess()
 		{

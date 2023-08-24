@@ -8,10 +8,10 @@ namespace smells.Interfaces
 {
     public interface IGame
     {
-        int RunGame();
         string Name { get; set; }
+        void RunGame(string userName);
         string GenerateNumbersToGuess();
         string HandleUserGuess();
-        //HighScore highscore();
+        HighScore highscore { get; set; }
     }
 }

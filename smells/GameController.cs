@@ -9,17 +9,14 @@ namespace smells
 {
     public class GameController //meny, "Länk" till alla spel o menyval, skriver ut o läser från console mha ui
 	{
-		private HighScore highscores;
 		public List<IGame>? games = new List<IGame>();
 
 
-		//private CowsAndBulls cowsAndBulls;
 		private IUI ui;
 		string userName { get; set; }
 		string menuChoice { get; set; }
-		public GameController(HighScore highscores)
+		public GameController()
 		{
-			this.highscores = highscores;
 			userName="";
 			menuChoice="";
 		}
@@ -79,10 +76,8 @@ namespace smells
 			{
 				while (continuePlaying)
 				{
-					int gameResult = games[choice].RunGame();
-					highscores.AddHighScore(userName, gameResult);
-					highscores.PrintHighScores();
-					ui.PrintToConsole("New game [y]\tBack to Menu [M]");
+					games[choice].RunGame(userName);
+                    ui.PrintToConsole("New game [y]\tBack to Menu [M]");
 					if (ui.ReadFromConsole() == "m" || ui.ReadFromConsole() == "M") continuePlaying = false;
 				}
 			}

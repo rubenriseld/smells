@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using smells.Interfaces;
 using smells;
 using smells.Interfaces;
 
@@ -12,9 +13,8 @@ class MainClass
 	{
 
 		IUI userInterface = new UI(); 
-		HighScore cowsAndBullshighScores = new HighScore();
 		CowsAndBulls cowsAndBulls = new CowsAndBulls();
-		GameController gameController = new GameController(cowsAndBullshighScores);
+		GameController gameController = new GameController();
 		gameController.AddUserInterface(userInterface);
 		gameController.AddGame(cowsAndBulls);
 		gameController.Menu();

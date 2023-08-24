@@ -11,20 +11,22 @@ namespace smells
     public class HighScore
 	{
 		IUI ui;
-		public HighScore()
+		string txtFile { get; set; }
+		public HighScore(string txtFile)
 		{
 			ui = new UI();
+			this.txtFile=txtFile;
 		}
 		public void AddHighScore(string userName, int numberOfGuesses)
 		{
-			StreamWriter streamWriter = new StreamWriter("HighScores.txt", append: true);
+			StreamWriter streamWriter = new StreamWriter($"{txtFile}.txt", append: true);
 			streamWriter.WriteLine(userName + "#&#" + numberOfGuesses);
 			streamWriter.Close();
 
 		}
 		public void PrintHighScores()
 		{
-			List<PlayerData> playerHighScores = GetHighScores("Highscores");		
+			List<PlayerData> playerHighScores = GetHighScores();		
 			playerHighScores.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
 			ui.PrintToConsole("Player\t\t  Games\t  Avarage\n\t______\t\t  _____\t  _______");
 			foreach (PlayerData player in playerHighScores)
@@ -33,11 +35,11 @@ namespace smells
 			}
 			ui.PrintToConsole("_________________________________");
 		}
-		public List<PlayerData> GetHighScores(string game)
+		public List<PlayerData> GetHighScores()
 		{
 			
 
-			StreamReader streamReader = new StreamReader($"{game}.txt");
+			StreamReader streamReader = new StreamReader($"{txtFile}.txt");
 			List<PlayerData> playerHighScores = new List<PlayerData>();
 			string line;
 			while ((line = streamReader.ReadLine()) != null)
