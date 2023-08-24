@@ -8,9 +8,9 @@ namespace smells.Interfaces
 {
     internal interface IGame
     {
-        int RunGame();
+        void RunGame(string userName);
         string GenerateNumbersToGuess();
         string HandleUserGuess();
-        //HighScore highscore();
+        HighScore highscore { get; set; }
     }
 }
