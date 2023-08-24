@@ -15,8 +15,7 @@ class MainClass
 		IUI userInterface = new UI(); 
 		CowsAndBulls cowsAndBulls = new CowsAndBulls();
 		GameController gameController = new GameController();
-		gameController.AddUserInterface(userInterface);
-		gameController.AddGame(cowsAndBulls);
+		gameController.AddUserInterface(userInterface).AddGame(cowsAndBulls);
 		gameController.Menu();
 
 
