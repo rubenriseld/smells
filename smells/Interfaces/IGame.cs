@@ -10,8 +10,6 @@ namespace smells.Interfaces
     {
         string Name { get; set; }
         void RunGame(string userName);
-        string GenerateNumbersToGuess();
-        string HandleUserGuess();
         HighScore highscore { get; set; }
     }
 }

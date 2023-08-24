@@ -12,11 +12,10 @@ class MainClass
 	public static void Main(string[] args)
 	{
 
-		IUI userInterface = new UI(); 
-		CowsAndBulls cowsAndBulls = new CowsAndBulls();
+		IUI consoleUserInterface = new ConsoleUI(); 
+		CowsAndBulls cowsAndBulls = new CowsAndBulls(consoleUserInterface);
 		GameController gameController = new GameController();
-		gameController.AddUserInterface(userInterface).AddGame(cowsAndBulls);
-		gameController.Menu();
+		gameController.AddUserInterface(consoleUserInterface).AddGame(cowsAndBulls).Menu();
 
 
 

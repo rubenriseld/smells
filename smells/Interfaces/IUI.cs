@@ -8,9 +8,9 @@ namespace smells.Interfaces
 {
     public interface IUI
     {
-        void PrintToConsole(string s);
-        string ReadFromConsole();
-        void ExitConsole();
-        void ClearConsole();
+        void Output(string s);
+        string Input();
+        void Exit();
+        void Clear();
     }
 }

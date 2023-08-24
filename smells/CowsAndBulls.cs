@@ -15,11 +15,10 @@ namespace smells
 
         public string Name { get; set; }
 
-        private IUI ui;
-		//private HighScore hs;
-		public CowsAndBulls()
+        private IUI _ui;
+		public CowsAndBulls(IUI ui)
 		{
-			ui = new UI();
+			_ui = ui;
             Name = "Cows and Bulls";
             highscore = new HighScore("HighScoresCAB");
 
@@ -27,25 +26,25 @@ namespace smells
         public void RunGame(string userName)
 		{
 			numbersToGuess = GenerateNumbersToGuess();
-			ui.PrintToConsole("New game: \n");
-			ui.PrintToConsole("For practice, number is: " + numbersToGuess + "\n");
-			userGuess = ui.ReadFromConsole();
+			_ui.Output("New game: \n");
+			_ui.Output($"For practice, number is: {numbersToGuess}\n");
+			userGuess = _ui.Input();
 			int numberOfGuesses = 1;
 			string currentGuessResult = HandleUserGuess();
-			ui.PrintToConsole(currentGuessResult + "\n");
+			_ui.Output($"{currentGuessResult}\n");
 
 			string correctGuessResult = "BBBB,";
 			while (currentGuessResult != correctGuessResult)
 			{
 				numberOfGuesses++;
-				userGuess = ui.ReadFromConsole();
-				ui.PrintToConsole(userGuess + "\n");
+				userGuess = _ui.Input();
+				//_ui.Output($"\n {userGuess}");
 				currentGuessResult = HandleUserGuess();
-				ui.PrintToConsole(currentGuessResult + "\n");
+				_ui.Output($"{currentGuessResult}\n");
 			}
 			highscore.AddHighScore(userName, numberOfGuesses);
-			highscore.PrintHighScores();
-			ui.PrintToConsole("Correct, it took " + numberOfGuesses + " guesses\n");
+			_ui.Output("\nCorrect, it took " + numberOfGuesses + " guesses!\n");
+			_ui.Output(highscore.PrintHighScores());
 		}
 		public string GenerateNumbersToGuess()
 		{

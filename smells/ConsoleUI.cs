@@ -7,21 +7,21 @@ using smells.Interfaces;
 
 namespace smells
 {
-    public class UI :IUI
+    public class ConsoleUI :IUI
 	{
-		public void PrintToConsole(string s)
+		public void Output(string s)
 		{
-			Console.Write(s+"\n\t");
+			Console.WriteLine(s);
 		}
-		public string ReadFromConsole()
+		public string Input()
 		{
 			return Console.ReadLine().ToString();
 		}
-		public void ExitConsole()
+		public void Exit()
 		{
 			System.Environment.Exit(0);
 		}
-		public void ClearConsole()
+		public void Clear()
 		{
 			Console.Clear();
 		}
