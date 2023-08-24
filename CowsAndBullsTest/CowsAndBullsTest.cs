@@ -9,7 +9,7 @@ namespace Tests
 {
 	internal class CowsAndBullsTest
 	{
-		[Fact]
+		//[Fact]
 		//public void AverageOf5Times3Is5()
 		//=> mockPlayerData.Average().Should().Be(5.00);
 	}

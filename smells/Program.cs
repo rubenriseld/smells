@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using smells.Interfaces;
 using smells;
 
 namespace MooGame;

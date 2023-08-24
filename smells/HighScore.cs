@@ -24,7 +24,7 @@ namespace smells
 		}
 		public void PrintHighScores()
 		{
-			List<PlayerData> playerHighScores = GetHighScores("Highscores");		
+			List<PlayerData> playerHighScores = GetHighScores("HighScores");		
 			playerHighScores.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
 			ui.PrintToConsole("Player\t\t  Games\t  Avarage\n\t______\t\t  _____\t  _______");
 			foreach (PlayerData player in playerHighScores)

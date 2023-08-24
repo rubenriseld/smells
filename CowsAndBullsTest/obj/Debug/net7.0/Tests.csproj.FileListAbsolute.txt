@@ -1,0 +1,6 @@
+C:\Users\ozkal\Documents\Skola\CleanCode\Labb\codesmells\CowsAndBullsTest\bin\Debug\net7.0\CoverletSourceRootsMapping
+C:\Users\ozkal\Documents\Skola\CleanCode\Labb\codesmells\CowsAndBullsTest\obj\Debug\net7.0\Tests.csproj.AssemblyReference.cache
+C:\Users\ozkal\Documents\Skola\CleanCode\Labb\codesmells\CowsAndBullsTest\obj\Debug\net7.0\Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ozkal\Documents\Skola\CleanCode\Labb\codesmells\CowsAndBullsTest\obj\Debug\net7.0\Tests.AssemblyInfoInputs.cache
+C:\Users\ozkal\Documents\Skola\CleanCode\Labb\codesmells\CowsAndBullsTest\obj\Debug\net7.0\Tests.AssemblyInfo.cs
+C:\Users\ozkal\Documents\Skola\CleanCode\Labb\codesmells\CowsAndBullsTest\obj\Debug\net7.0\Tests.csproj.CoreCompileInputs.cache
