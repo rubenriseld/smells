@@ -34,11 +34,7 @@ namespace smells.MockObjects
 			}
 			return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
 		}
-		//public string RunGame(string userGuess)
-		//{
 
-		//	return "";
-		//}
 		public string GenerateNumbersToGuess()
 		{
 			int[] faultyGeneratedNumbers = { 5, 5, 3, 7};
@@ -46,11 +42,11 @@ namespace smells.MockObjects
 			for (int i = 0; i < 4; i++)
 			{
 				int newNumber = faultyGeneratedNumbers[i];
-				string newNumberValue = "" + newNumber.ToString(); 
+				string newNumberValue = "" + newNumber; 
 				while (numbersToGuess.Contains(newNumberValue))
 				{
 					newNumber = faultyGeneratedNumbers[i] + 1;
-					newNumberValue = "" + newNumber.ToString();
+					newNumberValue = "" + newNumber;
 				}
 				numbersToGuess = numbersToGuess + newNumberValue; 
 			}
