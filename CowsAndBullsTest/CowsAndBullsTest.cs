@@ -13,18 +13,17 @@ namespace Tests
 	{
 		MockCowsAndBullsData mockData= new MockCowsAndBullsData();
 		[Fact]
-		public void ThreeCorrectNumbersShouldEqualBBBcomma()
+		public void CorrectGuessShouldReturnBBBBComma()
+		=> mockData.HandleUserGuess("5278").Should().Be("BBBB,");
+		[Fact]
+		public void ThreeCorrectNumbersShouldReturnBBBcomma()
 		=> mockData.HandleUserGuess("5279").Should().Be("BBB,");
-
 		[Fact]
-		public void RightNumbersWrongPlaceShouldReturnCommaCCC()
+		public void TwoCorrectNumbersShouldReturnBBComma()
+			=> mockData.HandleUserGuess("0678").Should().Be("BB,");
+		[Fact]
+		public void CorrectNumbersWrongPlaceShouldReturnCommaCCC()
 		=> mockData.HandleUserGuess("8725").Should().Be(",CCCC");
-
-		[Fact]
-		public void NumberOfGuessesShouldIncrease()
-		{
-
-		}
 		[Fact]
 		public void FaultyNumbers5537ShouldBe5637()
 		=> mockData.GenerateNumbersToGuess().Should().Be("5637");
