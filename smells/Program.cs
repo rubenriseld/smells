@@ -14,8 +14,9 @@ class MainClass
 
 		IUI userInterface = new UI(); 
 		CowsAndBulls cowsAndBulls = new CowsAndBulls();
+		MasterMind masterMind = new MasterMind();
 		GameController gameController = new GameController();
-		gameController.AddUserInterface(userInterface).AddGame(cowsAndBulls);
+		gameController.AddUserInterface(userInterface).AddGame(cowsAndBulls).AddGame(masterMind);
 		gameController.Menu();
 
 
