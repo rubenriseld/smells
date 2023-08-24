@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace smells.Interfaces
 {
-    internal interface IGame
+    public interface IGame
     {
         int RunGame();
+        string Name { get; set; }
         string GenerateNumbersToGuess();
         string HandleUserGuess();
         //HighScore highscore();

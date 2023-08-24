@@ -11,11 +11,14 @@ namespace smells
 	{
 		string numbersToGuess;
 		string userGuess;
-		private IUI ui;
+		public string Name { get; set; }
+
+        private IUI ui;
 		//private HighScore hs;
 		public CowsAndBulls()
 		{
 			ui = new UI();
+            Name = "Cows and Bulls";
 			//hs = new HighScore();
 		}
 		public int RunGame()

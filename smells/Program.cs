@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using smells;
+using smells.Interfaces;
 
 namespace MooGame;
 
@@ -13,7 +14,9 @@ class MainClass
 		IUI userInterface = new UI(); 
 		HighScore cowsAndBullshighScores = new HighScore();
 		CowsAndBulls cowsAndBulls = new CowsAndBulls();
-		GameController gameController = new GameController(cowsAndBulls, userInterface, cowsAndBullshighScores);
+		GameController gameController = new GameController(cowsAndBullshighScores);
+		gameController.AddUserInterface(userInterface);
+		gameController.AddGame(cowsAndBulls);
 		gameController.Menu();
 
 
