@@ -21,8 +21,15 @@ namespace smells
 		{
 			numbersToGuess = GenerateNumbersToGuess(); //4 siffror
 			Console.WriteLine(numbersToGuess);
+			for (int i = 0; i < 12; i++)
+			{
+				userGuess = Console.ReadLine();
+				string correct = HandleUserGuess();
+				Console.WriteLine(string.Format("|{0,2}|{1,4}|{2,4}|{3,4}|{4,4}|", userGuess[0], userGuess[1], userGuess[2], userGuess[3], correct));
+			}
 			Console.WriteLine("[1] [2] [3] [4] [5] [6]");
-			userGuess = Console.ReadLine();
+
+
 			Console.WriteLine(HandleUserGuess());
 
 		}
@@ -41,26 +48,25 @@ namespace smells
 		public string HandleUserGuess()
 		{
 			int correctGuessAndPlace = 0;
-			int correctGuess = 0;
+			int correctGuessWrongPlace = 0;
 			userGuess += "    ";
-			for (int correctNumber = 0; correctNumber < 4; correctNumber++)
+			int loopCount = 0;
+			foreach (var number in numbersToGuess)
 			{
-				for (int guessedNumber = 0; guessedNumber < 4; guessedNumber++)
+				if (userGuess.Contains(number))
 				{
-					if (numbersToGuess[correctNumber] == userGuess[guessedNumber])
+					if (number == userGuess[loopCount])
 					{
-						if (correctNumber == guessedNumber)
-						{
-							correctGuessAndPlace++;
-						}
-						else
-						{
-							correctGuess++;
-						}
+						correctGuessAndPlace++;
+					}
+					else
+					{
+						correctGuessWrongPlace++;
 					}
 				}
+				loopCount++;
 			}
-			return "****".Substring(0, correctGuessAndPlace) + "," + "????".Substring(0, correctGuess);
+			return "****".Substring(0, correctGuessAndPlace) + "????".Substring(0, correctGuessWrongPlace);
 		}
 
 	}
