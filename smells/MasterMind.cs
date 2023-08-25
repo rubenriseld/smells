@@ -19,19 +19,37 @@ namespace smells
 		}
 		public void RunGame(string userName)
 		{
+			List<GameProgressData> gameBoard = new List<GameProgressData>();
 			numbersToGuess = GenerateNumbersToGuess(); //4 siffror
 			Console.WriteLine(numbersToGuess);
+			int numberOfGuesses = 0;
+			Console.WriteLine("[*** M A S T E R  M I N D ***]");
+
 			for (int i = 0; i < 12; i++)
 			{
 				userGuess = Console.ReadLine();
 				string correct = HandleUserGuess();
-				Console.WriteLine(string.Format("|{0,2}|{1,4}|{2,4}|{3,4}|{4,4}|", userGuess[0], userGuess[1], userGuess[2], userGuess[3], correct));
+
+				if (correct == "****")
+				{
+					i = 12;
+				}
+				gameBoard.Add(new GameProgressData(userGuess, correct));
+				if (userGuess == numbersToGuess) { i = 12; }
+				PrintProgress(gameBoard);
+				
 			}
-			Console.WriteLine("[1] [2] [3] [4] [5] [6]");
+			highscore.AddHighScore(userName, numberOfGuesses);
+			highscore.PrintHighScores();
 
-
-			Console.WriteLine(HandleUserGuess());
-
+		}
+		public void PrintProgress(List<GameProgressData> data)
+		{
+			Console.Clear();
+			foreach (var item in data)
+			{
+				Console.WriteLine(string.Format("|{0,2}|{1,4}|{2,4}|{3,4}|{4,4}|", item.UserGuess[0], item.UserGuess[1], item.UserGuess[2], item.UserGuess[3], item.UserGuessResult));
+			}
 		}
 		public string GenerateNumbersToGuess()
 		{
