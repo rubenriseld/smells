@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smells.Interfaces
+namespace smells.Interfaces;
+
+public interface IUI
 {
-    public interface IUI
-    {
-        void Output(string s);
-        string Input();
-        void Exit();
-        void Clear();
-    }
+    void Output(string s);
+    string Input();
+    void Exit();
+    void Clear();
 }
