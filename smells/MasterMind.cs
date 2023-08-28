@@ -19,37 +19,47 @@ namespace smells
 		}
 		public void RunGame(string userName)
 		{
-			List<GameProgressData> gameBoard = new List<GameProgressData>();
 			numbersToGuess = GenerateNumbersToGuess(); //4 siffror
 			Console.WriteLine(numbersToGuess);
-			int numberOfGuesses = 0;
-			Console.WriteLine("[*** M A S T E R  M I N D ***]");
+			GameProgressData[] gameBoard = CreateGameBoard();
+			PrintProgress(gameBoard);
 
+			int numberOfGuesses = 0;
 			for (int i = 0; i < 12; i++)
 			{
 				userGuess = Console.ReadLine();
 				string correct = HandleUserGuess();
-
 				if (correct == "****")
 				{
 					i = 12;
 				}
-				gameBoard.Add(new GameProgressData(userGuess, correct));
-				if (userGuess == numbersToGuess) { i = 12; }
+				gameBoard[i] = new GameProgressData().CreateData(userGuess, correct);
 				PrintProgress(gameBoard);
-				
+				numberOfGuesses++;
 			}
 			highscore.AddHighScore(userName, numberOfGuesses);
 			highscore.PrintHighScores();
 
 		}
-		public void PrintProgress(List<GameProgressData> data)
+		public GameProgressData[] CreateGameBoard()
+		{
+			GameProgressData gameProgressData = new GameProgressData();
+			GameProgressData[] gameBoard = new GameProgressData[12];
+
+			for (int i = 0; i < 12; i++)
+			{
+				gameBoard[i] = gameProgressData.CreateData("    ", " ");
+			}
+			return gameBoard;
+		}
+		public void PrintProgress(GameProgressData[] data)
 		{
 			Console.Clear();
-			foreach (var item in data)
+			Console.WriteLine("[   MASTERMIND  ]\n-----------------");
+			for (int i = 0; i < data.Length; i++)
 			{
-				Console.WriteLine(string.Format("|{0,2}|{1,4}|{2,4}|{3,4}|{4,4}|", item.UserGuess[0], item.UserGuess[1], item.UserGuess[2], item.UserGuess[3], item.UserGuessResult));
-			}
+				Console.WriteLine(string.Format("| {0} | {1} | {2} | {3} | {4} ", data[i].UserGuess[0], data[i].UserGuess[1], data[i].UserGuess[2], data[i].UserGuess[3], data[i].UserGuessResult));
+			}		
 		}
 		public string GenerateNumbersToGuess()
 		{
