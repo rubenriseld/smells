@@ -11,7 +11,7 @@ public class CowsAndBulls : IGame
 {
     public IUI _ui { get; set; }
     public string Name { get; set; }
-    public HighScore highscore { get; set; }
+    public HighScore HighScore { get; set; }
 
     string? numbersToGuess;
     string? userGuess;
@@ -19,7 +19,7 @@ public class CowsAndBulls : IGame
     public CowsAndBulls()
     {
         Name = "Cows and Bulls";
-        highscore = new HighScore("HighScoresCAB");
+        HighScore = new HighScore(Name);
     }
 
     public void AddUserInterface(IUI ui)
@@ -44,9 +44,9 @@ public class CowsAndBulls : IGame
             currentGuessResult = HandleUserGuess();
             _ui.Output($"{currentGuessResult}\n");
         }
-        highscore.AddHighScore(userName, numberOfGuesses);
+        HighScore.AddHighScore(userName, numberOfGuesses);
         _ui.Output("\nCorrect, it took " + numberOfGuesses + " guesses!\n");
-        _ui.Output(highscore.PrintHighScores());
+        _ui.Output(HighScore.PrintHighScores());
     }
     public string GenerateNumbersToGuess()
     {

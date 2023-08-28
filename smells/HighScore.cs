@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using smells.Interfaces;
-using static System.Formats.Asn1.AsnWriter;
-
 namespace smells;
 
 public class HighScore
@@ -25,12 +23,13 @@ public class HighScore
     {
         List<PlayerData> playerHighScores = GetHighScores();
         playerHighScores.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
-        string highScoreList = ("Player\t\t  Games\t  Avarage\n______\t\t  _____\t  _______");
+        string highScoreList = ("Player\t\tGames\tAverage\n------\t\t-----\t--------");
         foreach (PlayerData player in playerHighScores)
         {
-            highScoreList += (string.Format("\n{0, -9}\t{1,5:D}\t{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
+            //highScoreList += (string.Format("\n{0, -9}\t{1,5:D}\t{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
+            highScoreList += (string.Format("\n{0}\t\t{1}\t{2:F2}", player.Name, player.NumberOfGames, player.Average()));
         }
-        highScoreList += ("\n_________________________________");
+        highScoreList += ("\n--------------------------------");
         return highScoreList;
     }
     public List<PlayerData> GetHighScores()
