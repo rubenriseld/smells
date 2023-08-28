@@ -3,27 +3,36 @@ using System.IO;
 using System.Collections.Generic;
 using smells.Interfaces;
 using smells;
-using smells.Interfaces;
 
-namespace MooGame;
+namespace smells;
 
 class MainClass
 {
 	public static void Main(string[] args)
 	{
+        IUI consoleUserInterface = new ConsoleUI();
 
-		IUI consoleUserInterface = new ConsoleUI(); 
-		CowsAndBulls cowsAndBulls = new CowsAndBulls(consoleUserInterface);
-		GameController gameController = new GameController();
-		gameController.AddUserInterface(consoleUserInterface).AddGame(cowsAndBulls).Menu();
+        CowsAndBulls cowsAndBulls = new CowsAndBulls();
+
+        GameController gameController = new GameController(consoleUserInterface);
+		gameController
+			.AddGame(cowsAndBulls)
+			.Menu();
 
 
 
-		//gameController.AddUI(userInterface)
-		//	.AddGame(cowsAndBulls)
-		//	.AddGame(magicNumbers)
+        //CowsAndBulls cowsAndBulls = new CowsAndBulls(consoleUserInterface);
 
-		//gameController.Run();
-	}
+
+        //CowsAndBulls cowsAndBulls = new CowsAndBulls();
+        //cowsAndBulls
+        //	.AddUserInterface(consoleUserInterface);
+
+
+        //gameController
+        //	.AddUserInterface(consoleUserInterface)
+        //	.AddGame(cowsAndBulls)
+        //	.Menu();
+    }
 }
 
