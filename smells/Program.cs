@@ -12,11 +12,12 @@ class MainClass
 	{
         IUI consoleUserInterface = new ConsoleUI();
 
-		CowsAndBulls cowsAndBulls = new CowsAndBulls();
+		//CowsAndBulls cowsAndBulls = new CowsAndBulls();
 		GameController gameController = new GameController(consoleUserInterface);
 
 		gameController
-			.AddGame(cowsAndBulls)
+			.AddGame(new CowsAndBulls())
+			.AddGame(new MasterMind())
 			.RunController();
     }
 }
