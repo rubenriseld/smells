@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smells.Interfaces
+namespace smells.Interfaces;
+
+public interface IGame
 {
-    public interface IGame
-    {
-        string Name { get; set; }
-        void RunGame(string userName);
-        HighScore highscore { get; set; }
-    }
+    IUI _ui { set; }
+    HighScore HighScore { set; }
+    string Name { get; set; }
+    void AddUserInterface(IUI ui);
+    void RunGame(string userName);
 }
