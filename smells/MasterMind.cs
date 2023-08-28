@@ -31,12 +31,14 @@ namespace smells
 				string correct = HandleUserGuess();
 				if (correct == "****")
 				{
+					string usermsg = $"Good Job! It took you {numberOfGuesses}";
 					i = 12;
 				}
 				gameBoard[i] = new GameProgressData().CreateData(userGuess, correct);
 				PrintProgress(gameBoard);
 				numberOfGuesses++;
 			}
+
 			highscore.AddHighScore(userName, numberOfGuesses);
 			highscore.PrintHighScores();
 
