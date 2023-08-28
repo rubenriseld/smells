@@ -13,7 +13,7 @@ namespace smells
         public List<IGame>? games = new List<IGame>();
 
 
-        private IUI ui;
+        private IUI _ui;
         string userName { get; set; }
         string menuChoice { get; set; }
         public GameController()
@@ -29,30 +29,47 @@ namespace smells
         }
         public IGameController AddUserInterface(IUI ui)
         {
-            this.ui = ui;
+            _ui = ui;
             return this;
         }
         public void Menu()
         {
-            bool ShowMenu = true;
-            ui.PrintToConsole("\tEnter your user name:\n\t");
-            userName = ui.ReadFromConsole();
-
-            while (ShowMenu)
+            try
             {
-                ui.ClearConsole();
-                ui.PrintToConsole($"\n\tWelcome {userName}! \n\tChoose what to play:\n");
-
-                foreach (IGame game in games)
+                if(_ui != null)
                 {
-                    ui.PrintToConsole($"\t{games.IndexOf(game)} {game.Name} [E] Exit");
-                    //\n\t[2] Second Game\n\t
 
+                bool ShowMenu = true;
+                _ui.Output("Enter your user name:");
+                userName = _ui.Input();
+
+                while (ShowMenu)
+                {
+                    _ui.Clear();
+                    _ui.Output($"Welcome {userName}! \nChoose what to play:\n");
+
+                    foreach (IGame game in games)
+                    {
+                        _ui.Output($"[{games.IndexOf(game)}] {game.Name}");
+                        //\n\t[2] Second Game\n\t
+
+                    }
+                    _ui.Output("[E] Exit\n");
+                    menuChoice = _ui.Input();
+                    if (menuChoice.ToUpper() == "E") _ui.Exit();
+                    HandleMenuChoice();
                 }
-                menuChoice = ui.ReadFromConsole();
-                if (menuChoice.ToUpper() == "E") ui.ExitConsole();
-                HandleMenuChoice();
+                }
+                else
+                {
+                    Console.WriteLine("No UI connected to the GameController!");
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            
         }
         public void HandleMenuChoice()
         {
@@ -65,8 +82,8 @@ namespace smells
                 {
                     games[choice].RunGame(userName);
 
-                    ui.PrintToConsole("New game [y]\tBack to Menu [M]");
-                    menuChoice = ui.ReadFromConsole();
+                    _ui.Output("New game [Y]\tBack to Menu [M]");
+                    menuChoice = _ui.Input();
                     if (menuChoice.ToUpper() == "M") continuePlaying = false;
                 }
             }

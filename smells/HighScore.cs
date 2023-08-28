@@ -10,11 +10,9 @@ namespace smells
 {
     public class HighScore
 	{
-		IUI ui;
 		string txtFile { get; set; }
 		public HighScore(string txtFile)
 		{
-			ui = new UI();
 			this.txtFile=txtFile;
 		}
 		public void AddHighScore(string userName, int numberOfGuesses)
@@ -24,17 +22,19 @@ namespace smells
 			streamWriter.Close();
 
 		}
-		public void PrintHighScores()
+		public string PrintHighScores()
 		{
 			List<PlayerData> playerHighScores = GetHighScores();		
 			playerHighScores.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
-			ui.PrintToConsole("Player\t\t  Games\t  Avarage\n\t______\t\t  _____\t  _______");
+			string highScoreList = ("Player\t\t  Games\t  Avarage\n______\t\t  _____\t  _______");
 			foreach (PlayerData player in playerHighScores)
 			{
-				ui.PrintToConsole(string.Format("{0, -9}\t{1,5:D}\t{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
+                highScoreList += (string.Format("\n{0, -9}\t{1,5:D}\t{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
 			}
-			ui.PrintToConsole("_________________________________");
-		}
+            highScoreList += ("\n_________________________________");
+			return highScoreList;
+
+        }
 		public List<PlayerData> GetHighScores()
 		{
 			
