@@ -15,24 +15,10 @@ class MainClass
         CowsAndBulls cowsAndBulls = new CowsAndBulls();
 
         GameController gameController = new GameController(consoleUserInterface);
+
 		gameController
 			.AddGame(cowsAndBulls)
-			.Menu();
-
-
-
-        //CowsAndBulls cowsAndBulls = new CowsAndBulls(consoleUserInterface);
-
-
-        //CowsAndBulls cowsAndBulls = new CowsAndBulls();
-        //cowsAndBulls
-        //	.AddUserInterface(consoleUserInterface);
-
-
-        //gameController
-        //	.AddUserInterface(consoleUserInterface)
-        //	.AddGame(cowsAndBulls)
-        //	.Menu();
+			.RunController();
     }
 }
 

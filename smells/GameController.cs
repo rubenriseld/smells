@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using smells.Interfaces;
+﻿using smells.Interfaces;
 
 namespace smells;
 public class GameController : IGameController
 {
     private IUI _ui { get; set; }
 
-    public List<IGame>? _games = new List<IGame>();
+    private List<IGame>? _games = new List<IGame>();
     string userName { get; set; }
     string menuChoice { get; set; }
     public GameController(IUI ui)
@@ -26,35 +21,37 @@ public class GameController : IGameController
         game.AddUserInterface(_ui);
         return this;
     }
-    public void Menu()
+    public void RunController()
     {
         try
         {
             if (_ui != null)
             {
-                if (_games == null || _games.Count == 0)
+                if (_games != null || _games.Count != 0)
+                {
+                    bool ShowMenu = true;
+                    _ui.Output("Enter your user name:");
+                    userName = _ui.Input();
+
+                    while (ShowMenu)
+                    {
+                        _ui.Clear();
+                        _ui.Output($"Welcome {userName}! \nChoose what to play:\n");
+
+                        foreach (IGame game in _games)
+                        {
+                            _ui.Output($"[{_games.IndexOf(game)}] {game.Name}");
+                        }
+                        _ui.Output("[E] Exit\n");
+                        menuChoice = _ui.Input();
+                        if (menuChoice.ToUpper() == "E") _ui.Exit();
+                        HandleMenuChoice();
+                    }
+                }
+                else
                 {
                     _ui.Output("No games installed!");
                     return;
-                }
-
-                bool ShowMenu = true;
-                _ui.Output("Enter your user name:");
-                userName = _ui.Input();
-
-                while (ShowMenu)
-                {
-                    _ui.Clear();
-                    _ui.Output($"Welcome {userName}! \nChoose what to play:\n");
-
-                    foreach (IGame game in _games)
-                    {
-                        _ui.Output($"[{_games.IndexOf(game)}] {game.Name}");
-                    }
-                    _ui.Output("[E] Exit\n");
-                    menuChoice = _ui.Input();
-                    if (menuChoice.ToUpper() == "E") _ui.Exit();
-                    HandleMenuChoice();
                 }
             }
             else
@@ -69,7 +66,6 @@ public class GameController : IGameController
     }
     public void HandleMenuChoice()
     {
-
         bool continuePlaying = true;
         int choice = Convert.ToInt32(menuChoice);
         if (_games[choice] != null)
