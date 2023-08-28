@@ -11,36 +11,44 @@ namespace smells
 	{
 		string numbersToGuess;
 		string userGuess;
+		public IUI _ui { get; set; }
 		public string Name { get; set; }
-		public HighScore highscore { get; set; }
+		public HighScore HighScore { get; set; }
 		public MasterMind()
 		{
-			highscore = new HighScore("HighScoresMM");
+			Name ="Mastermind";
+			HighScore = new HighScore(Name);
+		}
+		public void AddUserInterface(IUI ui)
+		{
+			_ui = ui;
 		}
 		public void RunGame(string userName)
 		{
 			numbersToGuess = GenerateNumbersToGuess(); //4 siffror
-			Console.WriteLine(numbersToGuess);
 			GameProgressData[] gameBoard = CreateGameBoard();
 			PrintProgress(gameBoard);
-
+			_ui.Output(numbersToGuess);
+			string msg = $"Too bad :c The correct numbers are : {numbersToGuess}";
 			int numberOfGuesses = 0;
 			for (int i = 0; i < 12; i++)
 			{
-				userGuess = Console.ReadLine();
-				string correct = HandleUserGuess();
-				if (correct == "****")
+				userGuess = _ui.Input();
+				gameBoard[i] = new GameProgressData().CreateData(userGuess, HandleUserGuess());
+				PrintProgress(gameBoard);
+				if (HandleUserGuess() == "****")
 				{
-					string usermsg = $"Good Job! It took you {numberOfGuesses}";
+					msg = $"Good Job! It took you {numberOfGuesses+1} try!";
 					i = 12;
 				}
-				gameBoard[i] = new GameProgressData().CreateData(userGuess, correct);
-				PrintProgress(gameBoard);
-				numberOfGuesses++;
-			}
 
-			highscore.AddHighScore(userName, numberOfGuesses);
-			highscore.PrintHighScores();
+				numberOfGuesses++;
+
+
+			}
+			_ui.Output(msg);
+			HighScore.AddHighScore(userName, numberOfGuesses);
+			_ui.Output(HighScore.PrintHighScores());
 
 		}
 		public GameProgressData[] CreateGameBoard()
@@ -58,10 +66,11 @@ namespace smells
 		{
 			Console.Clear();
 			Console.WriteLine("[   MASTERMIND  ]\n-----------------");
+			Console.WriteLine("[Choose from 1-6]\n-----------------");
 			for (int i = 0; i < data.Length; i++)
 			{
 				Console.WriteLine(string.Format("| {0} | {1} | {2} | {3} | {4} ", data[i].UserGuess[0], data[i].UserGuess[1], data[i].UserGuess[2], data[i].UserGuess[3], data[i].UserGuessResult));
-			}		
+			}
 		}
 		public string GenerateNumbersToGuess()
 		{
