@@ -11,10 +11,11 @@ class MainClass
 	public static void Main(string[] args)
 	{
         IUI consoleUserInterface = new ConsoleUI();
-
-		//CowsAndBulls cowsAndBulls = new CowsAndBulls();
+		
 		GameController gameController = new GameController(consoleUserInterface);
 
+
+		//kolla factory
 		gameController
 			.AddGame(new CowsAndBulls())
 			.AddGame(new MasterMind())

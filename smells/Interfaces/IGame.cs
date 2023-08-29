@@ -8,7 +8,7 @@ namespace smells.Interfaces;
 
 public interface IGame
 {
-    IUI _ui { set; }
+    IUI UserInterface { set; }
     HighScore HighScore { set; }
     string Name { get; set; }
     void AddUserInterface(IUI ui);

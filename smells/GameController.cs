@@ -3,54 +3,58 @@
 namespace smells;
 public class GameController : IGameController
 {
-	private IUI _ui { get; set; }
+	public IUI UserInterface { get; set; }
 
-	private List<IGame>? _games = new List<IGame>();
-	string userName { get; set; }
-	string menuChoice { get; set; }
-	public GameController(IUI ui)
+	//private eller ba public?
+	private List<IGame>? _Games = new List<IGame>();
+	string UserName { get; set; }
+	string MenuChoice { get; set; }
+
+	public GameController(IUI userInterface)
 	{
-		_ui = ui;
-		userName = "";
-		menuChoice = "";
+		UserInterface = userInterface;
+		UserName = "";
+		MenuChoice = "";
 	}
 
 	public IGameController AddGame(IGame game)
 	{
-		_games.Add(game);
-		game.AddUserInterface(_ui);
+		_Games.Add(game);
+		game.AddUserInterface(UserInterface);
 		return this;
 	}
+
+	//bryt ut controllern
 	public void RunController()
 	{
 		try
 		{
-			if (_ui != null)
+			if (UserInterface != null)
 			{
-				if (_games != null || _games.Count != 0)
+				if (_Games != null || _Games.Count != 0)
 				{
 					bool ShowMenu = true;
 					string errorMessage = "";
-					_ui.Output("Enter your user name:");
-					userName = _ui.Input();
+					UserInterface.Output("Enter your user name:");
+					UserName = UserInterface.Input();
 
 					while (ShowMenu)
 					{
-						_ui.Clear();
-						_ui.Output($"Welcome {userName}! \nChoose what to play:\n");
+						UserInterface.Clear();
+						UserInterface.Output($"Welcome {UserName}! \nChoose what to play:\n");
 
-						foreach (IGame game in _games)
+						foreach (IGame game in _Games)
 						{
-							_ui.Output($"[{_games.IndexOf(game)}] {game.Name}");
+							UserInterface.Output($"[{_Games.IndexOf(game)}] {game.Name}");
 						}
-						_ui.Output("[E] Exit\n");
-						if(errorMessage != "")_ui.Output(errorMessage);
+						UserInterface.Output("[E] Exit\n");
+						if(errorMessage != "")UserInterface.Output(errorMessage);
 			
 
-						menuChoice = _ui.Input();
+						MenuChoice = UserInterface.Input();
 						try
 						{
-							if (menuChoice.ToUpper() == "E") _ui.Exit();
+							if (MenuChoice.ToUpper() == "E") UserInterface.Exit();
 							HandleMenuChoice();
 
 						}
@@ -62,7 +66,7 @@ public class GameController : IGameController
 				}
 				else
 				{
-					_ui.Output("No games installed!");
+					UserInterface.Output("No games installed!");
 					return;
 				}
 			}
@@ -79,21 +83,21 @@ public class GameController : IGameController
 	public void HandleMenuChoice()
 	{
 		bool continuePlaying = true;
-		int choice = Convert.ToInt32(menuChoice);
-		if (_games[choice] != null)
+		int choice = Convert.ToInt32(MenuChoice);
+		if (_Games[choice] != null)
 		{
 			while (continuePlaying)
 			{
-				_games[choice].RunGame(userName);
+				_Games[choice].RunGame(UserName);
 
-				_ui.Output("New game [Y]\tBack to Menu [M]");
-				menuChoice = _ui.Input();
-				if (menuChoice.ToUpper() == "M") continuePlaying = false;
+				UserInterface.Output("New game [Y]\tBack to Menu [M]");
+				MenuChoice = UserInterface.Input();
+				if (MenuChoice.ToUpper() == "M") continuePlaying = false;
 			}
 		}
 		else
 		{
-			_ui.Output("Invalid option!");
+			UserInterface.Output("Invalid option!");
 		}
 	}
 }

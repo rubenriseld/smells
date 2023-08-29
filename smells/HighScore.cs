@@ -8,14 +8,14 @@ namespace smells;
 
 public class HighScore
 {
-    string txtFile { get; set; }
+    string TxtFile { get; set; }
     public HighScore(string txtFile)
     {
-        this.txtFile = txtFile;
+        TxtFile = txtFile;
     }
     public void AddHighScore(string userName, int numberOfGuesses)
     {
-        StreamWriter streamWriter = new StreamWriter($"{txtFile}.txt", append: true);
+        StreamWriter streamWriter = new StreamWriter($"{TxtFile}.txt", append: true);
         streamWriter.WriteLine(userName + "#&#" + numberOfGuesses);
         streamWriter.Close();
     }
@@ -36,7 +36,7 @@ public class HighScore
     {
 
 
-        StreamReader streamReader = new StreamReader($"{txtFile}.txt");
+        StreamReader streamReader = new StreamReader($"{TxtFile}.txt");
         List<PlayerData> playerHighScores = new List<PlayerData>();
         string line;
         while ((line = streamReader.ReadLine()) != null)
