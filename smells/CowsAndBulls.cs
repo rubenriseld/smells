@@ -14,7 +14,7 @@ public class CowsAndBulls : IGame
     public IUI UserInterface { get; set; }
     public string Name { get; set; }
     public HighScore HighScore { get; set; }
-
+    private int NumberOfGuesses;
 
     public CowsAndBulls()
     {
@@ -31,24 +31,38 @@ public class CowsAndBulls : IGame
         NumbersToGuess = GenerateNumbersToGuess();
         UserInterface.Output("New game: \n");
         UserInterface.Output($"For practice, number is: {NumbersToGuess}\n");
+        PrintGameProgress();
+        RegisterHighScore(userName);
+        ShowHighScore();
+    }
+    public void PrintGameProgress()
+    {
         UserGuess = UserInterface.Input();
-        int numberOfGuesses = 1;
+        NumberOfGuesses = 1;
         string currentGuessResult = HandleUserGuess();
         UserInterface.Output($"{currentGuessResult}\n");
          
         string correctGuessResult = "BBBB,";
         while (currentGuessResult != correctGuessResult)
         {
-            numberOfGuesses++;
+			NumberOfGuesses++;
             UserGuess = UserInterface.Input();
             currentGuessResult = HandleUserGuess();
             UserInterface.Output($"{currentGuessResult}\n");
         }
-        UserInterface.Output("\nCorrect, it took " + numberOfGuesses + " guesses!\n");
-        HighScore.AddHighScore(userName, numberOfGuesses);
-        UserInterface.Output(HighScore.PrintHighScores());
+        UserInterface.Output("\nCorrect, it took " + NumberOfGuesses + " guesses!\n");
+
     }
-    public string GenerateNumbersToGuess()
+	public void RegisterHighScore(string userName)
+	{
+		HighScore.AddHighScore(userName, NumberOfGuesses);
+
+	}
+	public void ShowHighScore()
+	{
+		UserInterface.Output(HighScore.PrintHighScores());
+	}
+	public string GenerateNumbersToGuess()
     {
         Random numberGenerator = new Random();
         string numbersToGuess = "";
