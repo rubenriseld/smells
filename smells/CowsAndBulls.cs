@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using smells.Interfaces;
+﻿using smells.Interfaces;
 
 namespace smells;
 
@@ -13,27 +8,25 @@ public class CowsAndBulls : IGame
     string UserGuess;
     public IUI UserInterface { get; set; }
     public string Name { get; set; }
-    public HighScore HighScore { get; set; }
     private int NumberOfGuesses;
 
     public CowsAndBulls()
     {
         Name = "Cows and Bulls";
-        HighScore = new HighScore(Name);
     }
 
     public void AddUserInterface(IUI userInterface)
     {
         this.UserInterface = userInterface;
     }
-    public void RunGame(string userName)
+    public int RunGame()
     {
-        NumbersToGuess = GenerateNumbersToGuess();
+        UserInterface.Clear();
         UserInterface.Output("New game: \n");
+        NumbersToGuess = GenerateNumbersToGuess();
         UserInterface.Output($"For practice, number is: {NumbersToGuess}\n");
         PrintGameProgress();
-        RegisterHighScore(userName);
-        ShowHighScore();
+        return NumberOfGuesses;
     }
     public void PrintGameProgress()
     {
@@ -51,17 +44,8 @@ public class CowsAndBulls : IGame
             UserInterface.Output($"{currentGuessResult}\n");
         }
         UserInterface.Output("\nCorrect, it took " + NumberOfGuesses + " guesses!\n");
-
     }
-	public void RegisterHighScore(string userName)
-	{
-		HighScore.AddHighScore(userName, NumberOfGuesses);
 
-	}
-	public void ShowHighScore()
-	{
-		UserInterface.Output(HighScore.PrintHighScores());
-	}
 	public string GenerateNumbersToGuess()
     {
         Random numberGenerator = new Random();

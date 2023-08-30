@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using smells.Interfaces;
-using smells;
+﻿using smells.Interfaces;
 
 namespace smells;
 
@@ -11,9 +7,9 @@ class MainClass
 	public static void Main(string[] args)
 	{
         IUI consoleUserInterface = new ConsoleUI();
+		IHighScoreController highScoreController = new HighScoreController();
 		
-		GameController gameController = new GameController(consoleUserInterface);
-
+		GameController gameController = new GameController(consoleUserInterface, highScoreController);
 
 		//kolla factory
 		gameController
@@ -22,4 +18,3 @@ class MainClass
 			.RunController();
     }
 }
-
