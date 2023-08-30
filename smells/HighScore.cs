@@ -9,6 +9,7 @@ namespace smells;
 public class HighScore
 {
     string TxtFile { get; set; }
+    private List<PlayerData> PlayerData= new List<PlayerData>();
     public HighScore(string txtFile)
     {
         TxtFile = txtFile;
@@ -21,10 +22,10 @@ public class HighScore
     }
     public string PrintHighScores()
     {
-        List<PlayerData> playerHighScores = GetHighScores();
-        playerHighScores.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
+        GetHighScores();
+		PlayerData.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
         string highScoreList = ("Player\t\tGames\tAverage\n------\t\t-----\t--------");
-        foreach (PlayerData player in playerHighScores)
+        foreach (PlayerData player in PlayerData)
         {
             //highScoreList += (string.Format("\n{0, -9}\t{1,5:D}\t{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
             highScoreList += (string.Format("\n{0}\t\t{1}\t{2:F2}", player.Name, player.NumberOfGames, player.Average()));
@@ -32,12 +33,9 @@ public class HighScore
         highScoreList += ("\n--------------------------------");
         return highScoreList;
     }
-    public List<PlayerData> GetHighScores()
+    public void GetHighScores()
     {
-
-
         StreamReader streamReader = new StreamReader($"{TxtFile}.txt");
-        List<PlayerData> playerHighScores = new List<PlayerData>();
         string line;
         while ((line = streamReader.ReadLine()) != null)
         {
@@ -45,17 +43,17 @@ public class HighScore
             string name = nameAndScore[0];
             int score = Convert.ToInt32(nameAndScore[1]);
             PlayerData playerData = new PlayerData(name, score);
-            int position = playerHighScores.IndexOf(playerData);
+            int position = PlayerData.IndexOf(playerData);
             if (position < 0)
             {
-                playerHighScores.Add(playerData);
+                PlayerData.Add(playerData);
             }
             else
             {
-                playerHighScores[position].Update(score);
+                PlayerData[position].Update(score);
             }
         }
         streamReader.Close();
-        return playerHighScores;
+       
     }
 }
