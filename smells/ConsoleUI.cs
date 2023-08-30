@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using smells.Interfaces;
-using System;
+﻿using smells.Interfaces;
 
 namespace smells;
-
 
 public class ConsoleUI : IUI
 {

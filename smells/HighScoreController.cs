@@ -1,29 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using smells.Interfaces;
+
 namespace smells;
 
-public class HighScore
+public class HighScoreController : IHighScoreController
 {
-    string TxtFile { get; set; }
-    private List<PlayerData> PlayerData= new List<PlayerData>();
-    public HighScore(string txtFile)
+    //string TxtFile { get; set; }
+    private List<PlayerData> PlayerData = new List<PlayerData>();
+    public void AddHighScore(string gameName, string userName, int numberOfGuesses)
     {
-        TxtFile = txtFile;
-    }
-    public void AddHighScore(string userName, int numberOfGuesses)
-    {
-        StreamWriter streamWriter = new StreamWriter($"{TxtFile}.txt", append: true);
+        StreamWriter streamWriter = new StreamWriter($"{gameName}.txt", append: true);
         streamWriter.WriteLine(userName + "#&#" + numberOfGuesses);
         streamWriter.Close();
     }
-    public string PrintHighScores()
+    public string PrintHighScore(string gameName)
     {
-        GetHighScores();
-		PlayerData.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
+        PlayerData.Clear(); 
+        GetHighScore(gameName);
+        PlayerData.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
         string highScoreList = ("Player\t\tGames\tAverage\n------\t\t-----\t--------");
         foreach (PlayerData player in PlayerData)
         {
@@ -33,9 +28,9 @@ public class HighScore
         highScoreList += ("\n--------------------------------");
         return highScoreList;
     }
-    public void GetHighScores()
+    public void GetHighScore(string gameName)
     {
-        StreamReader streamReader = new StreamReader($"{TxtFile}.txt");
+        StreamReader streamReader = new StreamReader($"{gameName}.txt");
         string line;
         while ((line = streamReader.ReadLine()) != null)
         {
@@ -54,6 +49,6 @@ public class HighScore
             }
         }
         streamReader.Close();
-       
+
     }
 }
