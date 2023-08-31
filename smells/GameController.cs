@@ -3,102 +3,113 @@
 namespace smells;
 public class GameController : IGameController
 {
-    public IUI UserInterface { get; set; }
-    public IHighScoreController HighScoreController { get; set; }
+	public IUI UserInterface { get; set; }
+	public IHighScoreController HighScoreController { get; set; }
 
-    public List<IGame>? Games { get; set; }
-    string UserName { get; set; }
-    string MenuChoice { get; set; }
-    string ErrorMessage { get; set; }
+	public List<IGame>? Games { get; set; }
+	string UserName { get; set; }
+	string MenuChoice { get; set; }
+	string ErrorMessage { get; set; }
+	bool GamesExists = true;
 
-    public GameController(IUI userInterface, IHighScoreController highScoreController)
-    {
-        UserInterface = userInterface;
-        HighScoreController = highScoreController;
-        Games = new List<IGame>();
-        UserName = MenuChoice = ErrorMessage = String.Empty;
-    }
+	public GameController(IUI userInterface, IHighScoreController highScoreController)
+	{
+		UserInterface = userInterface;
+		HighScoreController = highScoreController;
+		Games = new List<IGame>();
+		UserName = MenuChoice = ErrorMessage = String.Empty;
+	}
 
-    public IGameController AddGame(IGame game)
-    {
-        Games.Add(game);
-        game.AddUserInterface(UserInterface);
-        return this;
-    }
+	public IGameController AddGame(IGame game)
+	{
+		Games.Add(game);
+		game.AddUserInterface(UserInterface);
+		return this;
+	}
 
-    public void RunController()
-    {
-        if (UserInterface == null)
-        {
-            Console.WriteLine("No UI connected to the GameController!");
-            return;
-        }
-        if (Games == null || Games.Count == 0)
-        {
-            UserInterface.Output("No games installed!");
-            UserInterface.Exit();
-        }
-        UserInterface.Output("Enter your usernname:");
-        UserName = UserInterface.Input();
-        DisplayMenu();
-    }
+	public void RunController()
+	{
+		GamesAreInstalled();
+		UserInterface.Output("Enter your username:\n");
+		UserName = UserInterface.Input();
+		DisplayMenu();
+	}
+	public void GamesAreInstalled()
+	{
+		if (Games.Count == 0)
+		{
+			GamesExists = false;
+		}
+	}
+	//HandleGameMenu() 
+	//HandleMainGameMenu()
+	public void DisplayMenu()
+	{
+		bool displayingMenu = true;
+		while (displayingMenu)
+		{
+			UserInterface.Clear();
+			UserInterface.Output($"Welcome {UserName}!\n");
+			ShowGameOptions();
+			UserInterface.Output("\n[E] Exit\n");
+			if (ErrorMessage != String.Empty) UserInterface.Output(ErrorMessage);
+			HandleMenuChoice();
 
-    public void DisplayMenu()
-    {
-        bool displayingMenu = true;
-        while (displayingMenu)
-        {
-            UserInterface.Clear();
-            UserInterface.Output($"Welcome {UserName}! \nChoose what to play:\n");
+		}
+	}
+	public void ShowGameOptions()
+	{
+		if (GamesExists == true)
+		{
+			UserInterface.Output("Choose what to play:\n");
 
-            foreach (IGame game in Games)
-            {
-                UserInterface.Output($"[{Games.IndexOf(game)}] {game.Name}");
-            }
-            UserInterface.Output("[E] Exit\n");
+			foreach (IGame game in Games)
+			{
+				UserInterface.Output($"[{Games.IndexOf(game)}] {game.Name}");
+			}
+		}
+		else ErrorMessage = "No games are installed. Please exit and add games to the controller.\n";
+	}
+	public void HandleMenuChoice()
+	{
+		try
+		{
+			MenuChoice = UserInterface.Input();
+			if (MenuChoice.ToUpper() == "E") UserInterface.Exit();
+			else
+			{
+				RunGame(Convert.ToInt32(MenuChoice));
+				ErrorMessage = String.Empty;
+			}
+		}
+		catch(Exception e)
+		{
 
-            if (ErrorMessage != String.Empty) UserInterface.Output(ErrorMessage);
+			ErrorMessage = e.ToString();
+		}
 
-            MenuChoice = UserInterface.Input();
-            try
-            {
-                if (MenuChoice.ToUpper() == "E") UserInterface.Exit();
-                HandleMenuChoice();
-            }
-            catch
-            {
-                ErrorMessage = "Choose from the menu options\n";
-            }
-        }
-    }
-    public void HandleMenuChoice()
-    {
-        bool continuePlaying = true;
-        int choice = Convert.ToInt32(MenuChoice);
-        if (Games[choice] != null)
-        {
-            while (continuePlaying)
-            {
-                int userScore = Games[choice].RunGame();
-                RegisterHighScore(Games[choice].Name, UserName, userScore);
-                ShowHighScore(Games[choice].Name);
-                UserInterface.Output("New game [Y]\tBack to Menu [M]");
-                MenuChoice = UserInterface.Input();
-                if (MenuChoice.ToUpper() == "M") continuePlaying = false;
-            }
-        }
-        else
-        {
-            UserInterface.Output("Invalid option!");
-        }
-    }
-    public void RegisterHighScore(string gameName, string userName, int guesses)
-    {
-        HighScoreController.AddHighScore(gameName, userName, guesses);
+	}
+	public void RunGame(int choice)
+	{
+		bool continuePlaying = true;
 
-    }
-    public void ShowHighScore(string gameName)
-    {
-        UserInterface.Output(HighScoreController.PrintHighScore(gameName));
-    }
+		while (continuePlaying)
+		{
+			int userScore = Games[choice].Start();
+			RegisterHighScore(Games[choice].Name, UserName, userScore);
+			ShowHighScore(Games[choice].Name);
+			UserInterface.Output("New game [Y]\tBack to Menu [M]");
+			MenuChoice = UserInterface.Input();
+			if (MenuChoice.ToUpper() == "M") continuePlaying = false;
+		}
+	}
+	public void RegisterHighScore(string gameName, string userName, int guesses)
+	{
+		HighScoreController.AddHighScore(gameName, userName, guesses);
+
+	}
+	public void ShowHighScore(string gameName)
+	{
+		UserInterface.Output(HighScoreController.PrintHighScore(gameName));
+	}
 }

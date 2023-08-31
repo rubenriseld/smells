@@ -19,7 +19,7 @@ public class CowsAndBulls : IGame
     {
         this.UserInterface = userInterface;
     }
-    public int RunGame()
+    public int Start()
     {
         UserInterface.Clear();
         UserInterface.Output("New game: \n");
@@ -43,7 +43,7 @@ public class CowsAndBulls : IGame
             currentGuessResult = HandleUserGuess();
             UserInterface.Output($"{currentGuessResult}\n");
         }
-        UserInterface.Output("\nCorrect, it took " + NumberOfGuesses + " guesses!\n");
+        UserInterface.Output("Correct, it took " + NumberOfGuesses + " guesses!\n");
     }
 
 	public string GenerateNumbersToGuess()
