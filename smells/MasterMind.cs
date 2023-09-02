@@ -94,59 +94,9 @@ public class MasterMind : IGame
         int correctGuessAndPlace = 0;
         int correctGuessWrongPlace = 0;
         UserGuess += "    ";
-        //List<char> checkedNumbers = new List<char>();
-        List<char> correct = new List<char>();
 
-        //try
-        //{
-
-        //	for (int i = 0; i < 4; i++)
-        //	{
-        //		for (int j = 0; j < 4; j++)
-        //		{
-        //			if (NumbersToGuess[i] == UserGuess[j])
-        //			{
-        //				if (i == j)
-        //				{
-        //					correctGuessAndPlace++;
-        //					checkedNumbers.Add(NumbersToGuess[i]);
-        //					correct.Add(UserGuess[j]);
-        //					checkedNumbers.Add(UserGuess[j]);
-        //					UserInterface.Output("correctGuessAndPlace " +correctGuessAndPlace.ToString() + "i:" + i + " j: " + j);
-        //				}
-        //				else if (NumbersToGuess.Contains(UserGuess[j]) && !correct.Contains(UserGuess[j]) ||
-        //						NumbersToGuess.Contains(UserGuess[j]) && correct.Contains(UserGuess[j]) && !checkedNumbers.Contains(UserGuess[j]))
-        //				{
-        //					correctGuessWrongPlace++;
-        //					//checkedNumbers.Add(NumbersToGuess[i]);
-        //					//checkedNumbers[UserGuess[j]] = true;
-
-        //					UserInterface.Output("correctGuessWrongPlace " + correctGuessWrongPlace.ToString() + "i:" + i + " j: " + j);
-
-        //				}
-        //			}
-        //		}
-        //	}
-        //}
-        //catch (Exception e)
-        //{
-        //	UserInterface.Output(e.ToString());
-        //}
-
-        //om siffra finns i ToGuess och är på rätt plats ++rätt ++rätttlista
-        //om siffra finns i ToGuess och är INTE på rätt plats inte finns i rättlista cows++
-        //om siffra finns i ToGuess och är INTE på rätt plats och FINNS i rättlista cows++
-
-        //array[2: false, 3: false, 2:true]
-
-        //Dictionary << Tuple<int, char>, bool> checkedNumbers = new Dictionary<Tuple<int, char>, bool>();
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    checkedNumbers.Add( { Convert.ToChar(i), UserGuess[i]}, false);
-        ////??
-        ////add.(char number, bool false
-        //}
-
+        //dictionaries for storing numbers that have been checked to see if they match,
+        //and avoid using them for matching with multiple numbers (gives misleading guess results)
         Dictionary<(int, char), bool> checkedUserGuess = new Dictionary<(int, char), bool>();
         for (int i = 0; i < 4; i++)
         {
@@ -159,118 +109,41 @@ public class MasterMind : IGame
         }
 
 
-
-
-   //     int loop = 0;
-   //     foreach (var checkd in checkedNumbersToGuess)
-   //     {
-   //         if (checkd.Value.Equals(UserGuess[loop]))    
-   //         {
-			//	(checkd.Value.K) = false;
-			//}
-   //         else
-   //         {
-   //             correctGuessWrongPlace++;
-   //         }
-   //         loop++;
-   //     }
-
-        //checked numbers har siffran o e false - siffran finns i toGuess o e rätt, kör true
-
-        //foreach (var number in UserGuess)
-        //{
-        //	for (int i = 0; i < 4; i++)
-        //	{
-        //		if (number== NumbersToGuess[i] && checkedNumbers[(i, UserGuess[i])] == false)
-        //		{
-        //			checkedNumbers[(i, UserGuess[i])] = true;
-        //			correct.Add(number);
-        //			correctGuessAndPlace++;
-        //			UserInterface.Output("correctGuessAndPlace " + correctGuessAndPlace.ToString() + "i:" + i + " j: " + number);
-
-        //		}
-        //              else if (NumbersToGuess.Contains(number) && !correct.Contains(number) && checkedNumbers[(i, UserGuess[i])] == false)
-        //		{
-        //			checkedNumbers[(i, UserGuess[i])]= true;
-        //			correctGuessWrongPlace++;
-        //			UserInterface.Output("correctGuessWrongPlace " + correctGuessWrongPlace.ToString() + "i:" + i + " j: " + j);
-
-        //		}
-
-        //          }
-        //}
-        //return "****".Substring(0, correctGuessAndPlace) + "????".Substring(0, correctGuessWrongPlace);
-        //foreach (var item in checkedNumbers)
-        //{
-        //    UserInterface.Output(item.ToString());
-        //}
+        //check for matching numbers that are in the CORRECT place
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 4; j++)
             {
-
                 if (NumbersToGuess[i] == UserGuess[j])
                 {
-
                     if (i == j && checkedNumbersToGuess[(i, NumbersToGuess[i])] == false && checkedUserGuess[(j, UserGuess[j])] == false)
                     {
                         correctGuessAndPlace++;
                         checkedNumbersToGuess[(i, NumbersToGuess[i])] = true;
                         checkedUserGuess[(j, UserGuess[j])] = true;
-
-                        UserInterface.Output("correctGuessAndPlace " + correctGuessAndPlace.ToString() + "i:" + i + " j: " + j);
-                    }
-                    else if (checkedNumbersToGuess[(i, NumbersToGuess[i])] == false && checkedUserGuess[(j, UserGuess[j])] == false)
-					{
-                        correctGuessWrongPlace++;
-                        UserInterface.Output("correctGuessWrongPlace " + correctGuessWrongPlace.ToString() + "i:" + i + " j: " + j);
-                        //checkedNumbers[(j, UserGuess[j])] = true;
-                        checkedNumbersToGuess[(i, NumbersToGuess[i])] = true;
-                        checkedUserGuess[(j, UserGuess[j])] = true;
-
-
-
+                        //UserInterface.Output("correctGuessAndPlace " + correctGuessAndPlace.ToString() + "i:" + i + " j: " + j);
                     }
                 }
             }
         }
-		return "****".Substring(0, correctGuessAndPlace) + "????".Substring(0, correctGuessWrongPlace);
+
+        //check for matching numbers that are in the INCORRECT place
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (NumbersToGuess[i] == UserGuess[j])
+                {
+                    if (checkedNumbersToGuess[(i, NumbersToGuess[i])] == false && checkedUserGuess[(j, UserGuess[j])] == false)
+                    {
+                        correctGuessWrongPlace++;
+                        checkedNumbersToGuess[(i, NumbersToGuess[i])] = true;
+                        checkedUserGuess[(j, UserGuess[j])] = true;
+                        //UserInterface.Output("correctGuessWrongPlace " + correctGuessWrongPlace.ToString() + "i:" + i + " j: " + j);
+                    }
+                }
+            }
+        }
+        return "****".Substring(0, correctGuessAndPlace) + "????".Substring(0, correctGuessWrongPlace);
     }
-	
 }
-
-
-    //            if (NumbersToGuess[i] == UserGuess[j])
-    //{
-    //	if (i == j && checkedNumbers[(j, UserGuess[j])] == false)
-    //	{
-    //		correctGuessAndPlace++;
-    //		checkedNumbers[(j, UserGuess[j])] = true;
-    //		UserInterface.Output("correctGuessAndPlace " + correctGuessAndPlace.ToString() + "i:" + i + " j: " + j);
-    //	}
-    //	else if (NumbersToGuess.Contains(UserGuess[j]) &&
-    //		checkedNumbers[(j, UserGuess[j])] == false
-    //		)
-    //	{
-    //		correctGuessWrongPlace++;
-    //		//checkedNumbers.Add(NumbersToGuess[i]);
-    //		//checkedNumbers[UserGuess[j]] = true;
-    //		checkedNumbers[(j, UserGuess[j])] = true;
-
-
-    //		UserInterface.Output("correctGuessWrongPlace " + correctGuessWrongPlace.ToString() + "i:" + i + " j: " + j);
-
-    //	}
-    //}
-
-//        try
-//        {
-//    return "****".Substring(0, correctGuessAndPlace) + "????".Substring(0, correctGuessWrongPlace);
-
-//}
-//catch (Exception e)
-//{
-//    return e.ToString();
-//}
-//	}
-//}
