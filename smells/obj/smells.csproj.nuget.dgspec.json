@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\smells.csproj": {}
+    "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\smells\\smells.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\smells.csproj": {
+    "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\smells\\smells.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\smells.csproj",
+        "projectUniqueName": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\smells\\smells.csproj",
         "projectName": "smells",
-        "projectPath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\smells.csproj",
-        "packagesPath": "C:\\Users\\ozkal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\obj\\",
+        "projectPath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\smells\\smells.csproj",
+        "packagesPath": "C:\\Users\\ruben\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\smells\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ozkal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ruben\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

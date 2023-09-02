@@ -1,20 +1,15 @@
 ﻿using FluentAssertions;
-using smells;
+using Xunit;
 using smells.MockObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Tests
+namespace FluentAssertionsTestProject
 {
-	public class CowsAndBullsTest
+	public class CowsAndBullsTests
 	{
 		string MockNumbersToGuess = "5278";
 
 		MockCowsAndBullsData mockData;
-		public CowsAndBullsTest()
+		public CowsAndBullsTests()
 		{
 			mockData = new MockCowsAndBullsData(MockNumbersToGuess);
 		}
