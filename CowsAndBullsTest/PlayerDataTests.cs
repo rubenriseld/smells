@@ -1,8 +1,8 @@
 using FluentAssertions;
-using smells;
+using Xunit;
 using smells.MockObjects;
 
-namespace CowsAndBullsTest
+namespace FluentAssertionsTestProject
 {
 	public class PLayerDataTest
 	{

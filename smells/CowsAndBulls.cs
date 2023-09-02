@@ -69,13 +69,13 @@ public class CowsAndBulls : IGame
         int numberOfBulls = 0;
         int numberOfCows = 0;
         UserGuess += "    "; //if player entered less than 4 chars
-        for (int correctNumber = 0; correctNumber < 4; correctNumber++)
+        for (int i = 0; i < 4; i++)
         {
-            for (int guessedNumber = 0; guessedNumber < 4; guessedNumber++)
+            for (int j = 0; j < 4; j++)
             {
-                if (NumbersToGuess[correctNumber] == UserGuess[guessedNumber])
+                if (NumbersToGuess[i] == UserGuess[j])
                 {
-                    if (correctNumber == guessedNumber)
+                    if (i == j)
                     {
                         numberOfBulls++;
                     }

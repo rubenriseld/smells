@@ -6,21 +6,21 @@ public class PlayerData : IPlayerData
 {
     public string Name { get; private set; }
     public int NumberOfGames { get; private set; }
-    int TotalGuesses;
-    public PlayerData(string name, int guesses)
+    int TotalScore;
+    public PlayerData(string name, int score)
     {
         Name = name;
         NumberOfGames = 1;
-        this.TotalGuesses = guesses;
+        this.TotalScore = score;
     }
-    public void Update(int guesses)
+    public void Update(int score)
     {
-        TotalGuesses += guesses;
+        TotalScore += score;
         NumberOfGames++;
     }
     public double Average()
     {
-        return (double)TotalGuesses / NumberOfGames;
+        return (double)TotalScore / NumberOfGames;
     }
     public override bool Equals(Object p)
     {

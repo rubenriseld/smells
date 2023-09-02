@@ -1,4 +1,5 @@
 using smells.MockObjects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MsTestProject
 {
