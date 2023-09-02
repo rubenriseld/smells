@@ -8,8 +8,11 @@ namespace smells.MockObjects
 {
 	public class MockCowsAndBullsData
 	{
-		string generatedNumbers = "5278";
-		
+		string GeneratedNumbers { get; set;}
+		public  MockCowsAndBullsData(string mockGeneratedNumber)
+		{
+			GeneratedNumbers = mockGeneratedNumber;
+		}
 		public string HandleUserGuess(string userGuess)
 		{
 			int numberOfBulls = 0;
@@ -19,7 +22,7 @@ namespace smells.MockObjects
 			{
 				for (int guessedNumber = 0; guessedNumber < 4; guessedNumber++)
 				{
-					if (generatedNumbers[correctNumber] == userGuess[guessedNumber])
+					if (GeneratedNumbers[correctNumber] == userGuess[guessedNumber])
 					{
 						if (correctNumber == guessedNumber)
 						{
@@ -34,23 +37,23 @@ namespace smells.MockObjects
 			}
 			return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
 		}
-
-		public string GenerateNumbersToGuess()
+		public bool GenerateDuplicateNumbers()
 		{
-			int[] faultyGeneratedNumbers = { 5, 5, 3, 7};
-			string numbersToGuess = "";
+			CowsAndBulls cow = new CowsAndBulls();
+			int duplicateCounter = 0;
+			string numbersToGuess = cow.GenerateNumbersToGuess();
 			for (int i = 0; i < 4; i++)
 			{
-				int newNumber = faultyGeneratedNumbers[i];
-				string newNumberValue = "" + newNumber; 
-				while (numbersToGuess.Contains(newNumberValue))
+				for (int j = 0; j < 4; j++)
 				{
-					newNumber = faultyGeneratedNumbers[i] + 1;
-					newNumberValue = "" + newNumber;
+					if (numbersToGuess[i] == numbersToGuess[j] && j!= i)
+					{
+						duplicateCounter++;
+					}
 				}
-				numbersToGuess = numbersToGuess + newNumberValue; 
 			}
-			return numbersToGuess;
+			if (duplicateCounter == 0) return false;
+			else return true;
 		}
 
 	}
