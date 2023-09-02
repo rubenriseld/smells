@@ -11,21 +11,27 @@ namespace Tests
 {
 	public class CowsAndBullsTest
 	{
-		MockCowsAndBullsData mockData= new MockCowsAndBullsData();
+		string MockNumbersToGuess = "5278";
+
+		MockCowsAndBullsData mockData;
+		public CowsAndBullsTest()
+		{
+			mockData = new MockCowsAndBullsData(MockNumbersToGuess);
+		}
 		[Fact]
-		public void CorrectGuessShouldReturnBBBBComma()
+		public void UserGuess_5278_ShouldReturn_FourBulls()
 		=> mockData.HandleUserGuess("5278").Should().Be("BBBB,");
 		[Fact]
-		public void ThreeCorrectNumbersShouldReturnBBBcomma()
+		public void UserGuess_5279_ShouldReturn_ThreeBulls()
 		=> mockData.HandleUserGuess("5279").Should().Be("BBB,");
 		[Fact]
-		public void TwoCorrectNumbersShouldReturnBBComma()
+		public void TwoBullsShouldReturn_BB()
 			=> mockData.HandleUserGuess("0678").Should().Be("BB,");
 		[Fact]
-		public void CorrectNumbersWrongPlaceShouldReturnCommaCCC()
+		public void FourCowsShouldReturnCCCC()
 		=> mockData.HandleUserGuess("8725").Should().Be(",CCCC");
 		[Fact]
-		public void FaultyNumbers5537ShouldBe5637()
-		=> mockData.GenerateNumbersToGuess().Should().Be("5637");
+		public void GeneratedNumbersShouldBeUnique()
+		=> mockData.GenerateDuplicateNumbers().Should().BeFalse();
 	}
 }
