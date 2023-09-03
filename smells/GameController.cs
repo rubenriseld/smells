@@ -41,8 +41,6 @@ public class GameController : IGameController
             GamesAreInstalled = false;
 		}
 	}
-	//HandleGameMenu() 
-	//HandleMainGameMenu()
 	public void DisplayMenu()
 	{
 		bool displayingMenu = true;
@@ -81,10 +79,9 @@ public class GameController : IGameController
 				ErrorMessage = String.Empty;
 			}
 		}
-		catch(Exception e)
+		catch
 		{
-
-			ErrorMessage = e.ToString();
+			ErrorMessage = "Choose from the menu";
 		}
 
 	}
@@ -99,7 +96,12 @@ public class GameController : IGameController
 			ShowHighScore(Games[selectedGame].Name);
 			UserInterface.Output("New game [Y]\tBack to Menu [M]");
 			MenuChoice = UserInterface.Input();
-			if (MenuChoice.ToUpper() == "M") continuePlaying = false;
+			while(MenuChoice.ToUpper() != "M"  && MenuChoice.ToUpper() != "Y")
+			{
+				UserInterface.Output("Choose [Y] to play again \nChoose [M] to go back to the menu");
+				MenuChoice = UserInterface.Input();
+			}
+			if(MenuChoice.ToUpper() == "M") continuePlaying = false;
 		}
 	}
 	public void RegisterHighScore(string gameName, int userScore)
