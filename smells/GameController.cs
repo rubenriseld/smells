@@ -10,7 +10,7 @@ public class GameController : IGameController
 	string UserName { get; set; }
 	string MenuChoice { get; set; }
 	string ErrorMessage { get; set; }
-	bool GamesExists = true;
+	bool GamesAreInstalled = true;
 
 	public GameController(IUI userInterface, IHighScoreController highScoreController)
 	{
@@ -29,16 +29,16 @@ public class GameController : IGameController
 
 	public void RunController()
 	{
-		GamesAreInstalled();
+        CheckIfGamesAreInstalled();
 		UserInterface.Output("Enter your username:\n");
 		UserName = UserInterface.Input();
 		DisplayMenu();
 	}
-	public void GamesAreInstalled()
+	public void CheckIfGamesAreInstalled()
 	{
 		if (Games.Count == 0)
 		{
-			GamesExists = false;
+            GamesAreInstalled = false;
 		}
 	}
 	public void DisplayMenu()
@@ -52,12 +52,11 @@ public class GameController : IGameController
 			UserInterface.Output("\n[E] Exit\n");
 			if (ErrorMessage != String.Empty) UserInterface.Output(ErrorMessage);
 			HandleMenuChoice();
-
 		}
 	}
 	public void ShowGameOptions()
 	{
-		if (GamesExists == true)
+		if (GamesAreInstalled == true)
 		{
 			UserInterface.Output("Choose what to play:\n");
 
@@ -86,15 +85,15 @@ public class GameController : IGameController
 		}
 
 	}
-	public void RunGame(int choice)
+	public void RunGame(int selectedGame)
 	{
 		bool continuePlaying = true;
 
 		while (continuePlaying)
 		{
-			int userScore = Games[choice].Start();
-			RegisterHighScore(Games[choice].Name, UserName, userScore);
-			ShowHighScore(Games[choice].Name);
+			int userScore = Games[selectedGame].Start();
+			RegisterHighScore(Games[selectedGame].Name, userScore);
+			ShowHighScore(Games[selectedGame].Name);
 			UserInterface.Output("New game [Y]\tBack to Menu [M]");
 			MenuChoice = UserInterface.Input();
 			while(MenuChoice.ToUpper() != "M"  && MenuChoice.ToUpper() != "Y")
@@ -105,9 +104,9 @@ public class GameController : IGameController
 			if(MenuChoice.ToUpper() == "M") continuePlaying = false;
 		}
 	}
-	public void RegisterHighScore(string gameName, string userName, int guesses)
+	public void RegisterHighScore(string gameName, int userScore)
 	{
-		HighScoreController.AddHighScore(gameName, userName, guesses);
+		HighScoreController.AddHighScore(gameName, UserName, userScore);
 
 	}
 	public void ShowHighScore(string gameName)

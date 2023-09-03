@@ -8,10 +8,10 @@ public class HighScoreController : IHighScoreController
 {
     //string TxtFile { get; set; }
     private List<PlayerData> PlayerData = new List<PlayerData>();
-    public void AddHighScore(string gameName, string userName, int numberOfGuesses)
+    public void AddHighScore(string gameName, string userName, int score)
     {
         StreamWriter streamWriter = new StreamWriter($"{gameName}.txt", append: true);
-        streamWriter.WriteLine(userName + "#&#" + numberOfGuesses);
+        streamWriter.WriteLine(userName + "#&#" + score);
         streamWriter.Close();
     }
     public string PrintHighScore(string gameName)
