@@ -2,7 +2,9 @@
 
 public interface IHighScoreController
 {
-	void AddHighScore(string gameName, string userName, int score);
-	void GetHighScore(string gameName);
-	string PrintHighScore(string gameName);
+	string GameName { get; set; }
+	void AddHighScore(string userName, int score);
+	void GetHighScore();
+	string CreateHighScoreTable();
+	void SetCurrentGameName(string gameName);
 }
