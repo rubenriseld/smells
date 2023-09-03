@@ -22,7 +22,6 @@ public class HighScoreController : IHighScoreController
         string highScoreList = ("Player\t\tGames\tAverage\n------\t\t-----\t--------");
         foreach (PlayerData player in PlayerData)
         {
-            //highScoreList += (string.Format("\n{0, -9}\t{1,5:D}\t{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
             highScoreList += (string.Format("\n{0}\t\t{1}\t{2:F2}", player.Name, player.NumberOfGames, player.Average()));
         }
         highScoreList += ("\n--------------------------------");
