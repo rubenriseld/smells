@@ -92,8 +92,9 @@ public class GameController : IGameController
 		while (continuePlaying)
 		{
 			int userScore = Games[selectedGame].Start();
-			RegisterHighScore(Games[selectedGame].Name, userScore);
-			ShowHighScore(Games[selectedGame].Name);
+			SetCurrentGameName(Games[selectedGame].Name);
+			RegisterHighScore(userScore);
+			ShowHighScore();
 			UserInterface.Output("New game [Y]\tBack to Menu [M]");
 			MenuChoice = UserInterface.Input();
 			while(MenuChoice.ToUpper() != "M"  && MenuChoice.ToUpper() != "Y")
@@ -104,13 +105,16 @@ public class GameController : IGameController
 			if(MenuChoice.ToUpper() == "M") continuePlaying = false;
 		}
 	}
-	public void RegisterHighScore(string gameName, int userScore)
+	public void SetCurrentGameName(string gameName)
 	{
-		HighScoreController.AddHighScore(gameName, UserName, userScore);
-
+		HighScoreController.SetCurrentGameName(gameName);
 	}
-	public void ShowHighScore(string gameName)
+	public void RegisterHighScore(int userScore)
 	{
-		UserInterface.Output(HighScoreController.PrintHighScore(gameName));
+		HighScoreController.AddHighScore(UserName, userScore);
+	}
+	public void ShowHighScore()
+	{
+		UserInterface.Output(HighScoreController.CreateHighScoreTable());
 	}
 }
