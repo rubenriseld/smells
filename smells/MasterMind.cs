@@ -65,15 +65,15 @@ public class MasterMind : IGame
 	}
 	public void PrintGameProgress()
 	{
-		GameResultMessage = $"Too bad :c The correct numbers are : {NumbersToGuess}";
+		GameResultMessage = $"Too bad! The correct numbers are : {NumbersToGuess}";
 		NumberOfGuesses = 0;
 		for (int i = 0; i < 12; i++)
 		{
 			UserGuess = UserInterface.Input();
 
-			while (UserGuess.Count() < 4 || !UserGuess.All(char.IsDigit))
+			while (UserGuess.Count() != 4 || !UserGuess.All(char.IsDigit))
 			{
-				UserInterface.Output("[Use 4 digits]");
+				UserInterface.Output("[Please enter 4 numbers]\n");
 				UserGuess = UserInterface.Input();
 			}
 			GameBoard[i] = new GameProgressData().CreateData(UserGuess, HandleUserGuess());
@@ -91,7 +91,7 @@ public class MasterMind : IGame
 	{
 		int correctGuessAndPlace = 0;
 		int correctGuessWrongPlace = 0;
-		UserGuess += "    ";
+		//UserGuess += "";
 
 		//dictionaries for storing numbers that have been checked to see if they match,
 		//and avoid using them for matching with multiple numbers (gives misleading guess results)

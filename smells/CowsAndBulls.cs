@@ -30,16 +30,20 @@ public class CowsAndBulls : IGame
     }
     public void PrintGameProgress()
     {
-        UserGuess = UserInterface.Input();
-        NumberOfGuesses = 1;
-        string currentGuessResult = HandleUserGuess();
-        UserInterface.Output($"{currentGuessResult}\n");
-         
+        NumberOfGuesses = 0;
+        //UserGuess = UserInterface.Input();
+        string currentGuessResult = "";
         string correctGuessResult = "BBBB,";
         while (currentGuessResult != correctGuessResult)
         {
-			NumberOfGuesses++;
             UserGuess = UserInterface.Input();
+            while (UserGuess.Count() != 4 || !UserGuess.All(char.IsDigit))
+            {
+                UserInterface.Output("[Please enter 4 numbers]\n");
+                UserGuess = UserInterface.Input();
+                
+            }
+            NumberOfGuesses++;
             currentGuessResult = HandleUserGuess();
             UserInterface.Output($"{currentGuessResult}\n");
         }
@@ -68,7 +72,7 @@ public class CowsAndBulls : IGame
     {
         int numberOfBulls = 0;
         int numberOfCows = 0;
-        UserGuess += "    "; //if player entered less than 4 chars
+        //UserGuess += ""; //if player entered less than 4 chars
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 4; j++)
