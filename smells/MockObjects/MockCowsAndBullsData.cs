@@ -35,13 +35,14 @@ namespace smells.MockObjects
 					}
 				}
 			}
+			
 			return "BBBB".Substring(0, numberOfBulls) + "," + "CCCC".Substring(0, numberOfCows);
 		}
 		public bool GenerateDuplicateNumbers()
 		{
-			CowsAndBulls cow = new CowsAndBulls();
+			CowsAndBulls cowsAndBulls = new CowsAndBulls();
 			int duplicateCounter = 0;
-			string numbersToGuess = cow.GenerateNumbersToGuess();
+			string numbersToGuess = cowsAndBulls.GenerateNumbersToGuess();
 			for (int i = 0; i < 4; i++)
 			{
 				for (int j = 0; j < 4; j++)

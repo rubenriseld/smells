@@ -7,7 +7,7 @@ namespace smells;
 public class HighScoreController : IHighScoreController
 {
     public string GameName { get; set; }
-    private List<PlayerData> PlayerData = new List<PlayerData>();
+    private List<IPlayerData> PlayerData = new List<IPlayerData>();
     public void AddHighScore(string userName, int score)
     {
         StreamWriter streamWriter = new StreamWriter($"{GameName}.txt", append: true);
@@ -18,11 +18,11 @@ public class HighScoreController : IHighScoreController
     {
         PlayerData.Clear(); 
         GetHighScore();
-        PlayerData.Sort((player1, player2) => player1.Average().CompareTo(player2.Average()));
+        PlayerData.Sort((player1, player2) => player1.GetAverageOfTotalScore().CompareTo(player2.GetAverageOfTotalScore()));
         string highScores = ("Player\t\tGames\tAverage\n------\t\t-----\t--------");
         foreach (PlayerData player in PlayerData)
         {
-            highScores += (string.Format("\n{0}\t\t{1}\t{2:F2}", player.Name, player.NumberOfGames, player.Average()));
+            highScores += (string.Format("\n{0}\t\t{1}\t{2:F2}", player.Name, player.TotalGamesPlayed, player.GetAverageOfTotalScore()));
         }
         highScores += ("\n--------------------------------");
         return highScores;
@@ -44,7 +44,7 @@ public class HighScoreController : IHighScoreController
             }
             else
             {
-                PlayerData[position].Update(score);
+                PlayerData[position].AddToTotalScore(score);
             }
         }
         streamReader.Close();

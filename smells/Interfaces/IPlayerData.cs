@@ -1,9 +1,14 @@
-﻿namespace smells.Interfaces;
-
-public interface IPlayerData
+﻿namespace smells.Interfaces
 {
-    string Name { get; }
-    int NumberOfGames { get; }
-    public void Update(int guesses);
-    public double Average();
+    public interface IPlayerData
+    {
+        string Name { get; }
+        int TotalGamesPlayed { get; }
+
+        void AddToTotalScore(int score);
+        bool Equals(object p);
+        double GetAverageOfTotalScore();
+        int GetHashCode();
+        void IncreaseNumberOfGamesByOne();
+    }
 }

@@ -6270,19 +6270,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ruben\\.nuget\\packages\\": {}
+    "C:\\Users\\ozkal\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\FluentAssertionsTestProject\\FluentAssertionsTestProject.csproj",
+      "projectUniqueName": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\FluentAssertionsTestProject\\FluentAssertionsTestProject.csproj",
       "projectName": "FluentAssertionsTestProject",
-      "projectPath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\FluentAssertionsTestProject\\FluentAssertionsTestProject.csproj",
-      "packagesPath": "C:\\Users\\ruben\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\FluentAssertionsTestProject\\obj\\",
+      "projectPath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\FluentAssertionsTestProject\\FluentAssertionsTestProject.csproj",
+      "packagesPath": "C:\\Users\\ozkal\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\FluentAssertionsTestProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ruben\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ozkal\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6296,8 +6296,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\smells\\smells.csproj": {
-              "projectPath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\smells\\smells.csproj"
+            "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\smells.csproj": {
+              "projectPath": "C:\\Users\\ozkal\\Documents\\Skola\\CleanCode\\Labb\\codesmells\\smells\\smells.csproj"
             }
           }
         }
@@ -6353,7 +6353,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

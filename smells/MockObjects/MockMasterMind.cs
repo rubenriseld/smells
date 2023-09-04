@@ -19,8 +19,7 @@ public class MockMasterMind
     {
         int correctGuessAndPlace = 0;
         int correctGuessWrongPlace = 0;
-        userGuess += "    ";
-
+       
         //dictionaries for storing numbers that have been checked to see if they match,
         //and avoid using them for matching with multiple numbers (gives misleading guess results)
         Dictionary<(int, char), bool> checkedUserGuess = new Dictionary<(int, char), bool>();
