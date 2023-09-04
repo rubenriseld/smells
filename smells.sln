@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "smells", "smells\smells.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MsTestProject", "MsTestProject\MsTestProject.csproj", "{42EF56AC-D0C2-49D8-AC07-6FB950C8B5D3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentAssertionsTestProject", "FluentAssertionsTestProject\FluentAssertionsTestProject.csproj", "{A67581F6-E863-42E3-8519-7A841EB4B783}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{42EF56AC-D0C2-49D8-AC07-6FB950C8B5D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42EF56AC-D0C2-49D8-AC07-6FB950C8B5D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42EF56AC-D0C2-49D8-AC07-6FB950C8B5D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A67581F6-E863-42E3-8519-7A841EB4B783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A67581F6-E863-42E3-8519-7A841EB4B783}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A67581F6-E863-42E3-8519-7A841EB4B783}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A67581F6-E863-42E3-8519-7A841EB4B783}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
