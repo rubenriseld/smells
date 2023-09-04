@@ -6275,11 +6275,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\CowsAndBullsTest\\FluentAssertionsTestProject.csproj",
+      "projectUniqueName": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\FluentAssertionsTestProject\\FluentAssertionsTestProject.csproj",
       "projectName": "FluentAssertionsTestProject",
-      "projectPath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\CowsAndBullsTest\\FluentAssertionsTestProject.csproj",
+      "projectPath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\FluentAssertionsTestProject\\FluentAssertionsTestProject.csproj",
       "packagesPath": "C:\\Users\\ruben\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\CowsAndBullsTest\\obj\\",
+      "outputPath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\FluentAssertionsTestProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ruben\\AppData\\Roaming\\NuGet\\NuGet.Config",

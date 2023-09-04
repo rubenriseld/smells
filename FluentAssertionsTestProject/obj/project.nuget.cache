@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6Qb4B7rjaMzZn+PV3UOYg7a8bsW/ypIYp9UXnQCaT4Wkn2vbEvZGVtiqGMgqRKasjfpsYUZMHDRPOsUd2pWPMg==",
+  "dgSpecHash": "QVE+886mnkaueCU0gOl5kbGlVg09f/T2zd+RjpeIA91FvK3n9h1aK1rus+r8ZP44Hpq+rMvLDPhzSAXt3P8Qew==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\CowsAndBullsTest\\FluentAssertionsTestProject.csproj",
+  "projectFilePath": "C:\\Users\\ruben\\source\\repos\\cleancode\\smells\\FluentAssertionsTestProject\\FluentAssertionsTestProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ruben\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\ruben\\.nuget\\packages\\fluentassertions\\6.11.0\\fluentassertions.6.11.0.nupkg.sha512",
