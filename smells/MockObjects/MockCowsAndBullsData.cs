@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using smells.Games;
 
 namespace smells.MockObjects
 {
-	public class MockCowsAndBullsData
+    public class MockCowsAndBullsData
 	{
 		string GeneratedNumbers { get; set;}
 		public  MockCowsAndBullsData(string mockGeneratedNumber)

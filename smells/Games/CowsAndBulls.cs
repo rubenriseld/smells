@@ -1,6 +1,6 @@
 ﻿using smells.Interfaces;
 
-namespace smells;
+namespace smells.Games;
 
 public class CowsAndBulls : IGame
 {
@@ -17,7 +17,7 @@ public class CowsAndBulls : IGame
 
     public void AddUserInterface(IUI userInterface)
     {
-        this.UserInterface = userInterface;
+        UserInterface = userInterface;
     }
     public int Start()
     {
@@ -41,7 +41,7 @@ public class CowsAndBulls : IGame
             {
                 UserInterface.Output("[Please enter 4 numbers]\n");
                 UserGuess = UserInterface.Input();
-                
+
             }
             NumberOfGuesses++;
             currentGuessResult = HandleUserGuess();
@@ -50,20 +50,20 @@ public class CowsAndBulls : IGame
         UserInterface.Output("Correct, it took " + NumberOfGuesses + " guesses!\n");
     }
 
-	public string GenerateNumbersToGuess()
+    public string GenerateNumbersToGuess()
     {
         Random numberGenerator = new Random();
         string numbersToGuess = "";
         for (int i = 0; i < 4; i++)
         {
-            int newNumber = numberGenerator.Next(10); //upp till 10??
-            string newNumberValue = "" + newNumber; //för att kolla om samma siffra redan valts
-            while (numbersToGuess.Contains(newNumberValue)) //så länge random siffran redan finns hämta ny siffra
+            int newNumber = numberGenerator.Next(10);
+            string newNumberValue = "" + newNumber;
+            while (numbersToGuess.Contains(newNumberValue))
             {
                 newNumber = numberGenerator.Next(10);
                 newNumberValue = "" + newNumber;
             }
-            numbersToGuess = numbersToGuess + newNumberValue; //utöka goal me ny siffra
+            numbersToGuess = numbersToGuess + newNumberValue;
         }
         return numbersToGuess;
     }
@@ -72,7 +72,6 @@ public class CowsAndBulls : IGame
     {
         int numberOfBulls = 0;
         int numberOfCows = 0;
-        //UserGuess += ""; //if player entered less than 4 chars
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 4; j++)

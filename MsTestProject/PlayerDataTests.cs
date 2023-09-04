@@ -1,15 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using smells.MockObjects;
 using System;
-using smells;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using smells.Data;
 
 namespace MsTestProject
 {
-	[TestClass]
+    [TestClass]
 	public class PlayerDataTests
 	{
 		PlayerData mockPlayerData;

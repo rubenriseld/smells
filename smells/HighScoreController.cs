@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using smells.Data;
 using smells.Interfaces;
 
 namespace smells;
