@@ -20,6 +20,8 @@ public class HighScoreController : IHighScoreController
         PlayerData.Clear(); 
         GetHighScore();
         PlayerData.Sort((player1, player2) => player1.GetAverageOfTotalScore().CompareTo(player2.GetAverageOfTotalScore()));
+        
+        //creates and returns a "table" of highscores
         string highScores = ("Player\t\tGames\tAverage\n------\t\t-----\t--------");
         foreach (PlayerData player in PlayerData)
         {

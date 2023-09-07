@@ -14,7 +14,6 @@ public class CowsAndBulls : IGame
     {
         Name = "Cows and Bulls";
     }
-
     public void AddUserInterface(IUI userInterface)
     {
         UserInterface = userInterface;
@@ -31,7 +30,6 @@ public class CowsAndBulls : IGame
     public void PrintGameProgress()
     {
         NumberOfGuesses = 0;
-        //UserGuess = UserInterface.Input();
         string currentGuessResult = "";
         string correctGuessResult = "BBBB,";
         while (currentGuessResult != correctGuessResult)
@@ -67,7 +65,6 @@ public class CowsAndBulls : IGame
         }
         return numbersToGuess;
     }
-
     public string HandleUserGuess()
     {
         int numberOfBulls = 0;

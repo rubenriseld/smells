@@ -9,5 +9,4 @@ public class GameProgressData
         UserGuessResult = userGuessResult;
         return this;
     }
-
 }

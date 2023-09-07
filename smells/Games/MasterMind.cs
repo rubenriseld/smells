@@ -92,7 +92,6 @@ public class MasterMind : IGame
     {
         int correctGuessAndPlace = 0;
         int correctGuessWrongPlace = 0;
-        //UserGuess += "";
 
         //dictionaries for storing numbers that have been checked to see if they match,
         //and avoid using them for matching with multiple numbers (gives misleading guess results)
@@ -120,7 +119,6 @@ public class MasterMind : IGame
                         correctGuessAndPlace++;
                         checkedNumbersToGuess[(i, NumbersToGuess[i])] = true;
                         checkedUserGuess[(j, UserGuess[j])] = true;
-                        //UserInterface.Output("correctGuessAndPlace " + correctGuessAndPlace.ToString() + "i:" + i + " j: " + j);
                     }
                 }
             }
@@ -138,7 +136,6 @@ public class MasterMind : IGame
                         correctGuessWrongPlace++;
                         checkedNumbersToGuess[(i, NumbersToGuess[i])] = true;
                         checkedUserGuess[(j, UserGuess[j])] = true;
-                        //UserInterface.Output("correctGuessWrongPlace " + correctGuessWrongPlace.ToString() + "i:" + i + " j: " + j);
                     }
                 }
             }

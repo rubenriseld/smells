@@ -19,6 +19,7 @@ public class MockMasterMind
     {
         int correctGuessAndPlace = 0;
         int correctGuessWrongPlace = 0;
+
         //dictionaries for storing numbers that have been checked to see if they match,
         //and avoid using them for matching with multiple numbers (gives misleading guess results)
         Dictionary<(int, char), bool> checkedUserGuess = new Dictionary<(int, char), bool>();
@@ -32,7 +33,6 @@ public class MockMasterMind
             checkedNumbersToGuess.Add((i, NumbersToGuess[i]), false);
         }
 
-
         //check for matching numbers that are in the CORRECT place
         for (int i = 0; i < 4; i++)
         {
@@ -45,7 +45,6 @@ public class MockMasterMind
                         correctGuessAndPlace++;
                         checkedNumbersToGuess[(i, NumbersToGuess[i])] = true;
                         checkedUserGuess[(j, userGuess[j])] = true;
-                        //UserInterface.Output("correctGuessAndPlace " + correctGuessAndPlace.ToString() + "i:" + i + " j: " + j);
                     }
                 }
             }
@@ -63,7 +62,6 @@ public class MockMasterMind
                         correctGuessWrongPlace++;
                         checkedNumbersToGuess[(i, NumbersToGuess[i])] = true;
                         checkedUserGuess[(j, userGuess[j])] = true;
-                        //UserInterface.Output("correctGuessWrongPlace " + correctGuessWrongPlace.ToString() + "i:" + i + " j: " + j);
                     }
                 }
             }

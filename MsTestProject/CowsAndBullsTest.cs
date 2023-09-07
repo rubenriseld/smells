@@ -21,7 +21,7 @@ namespace MsTestProject
 			MockData = new MockCowsAndBullsData(MockNumberToGuess);
 		}
 		[TestMethod]
-		public void UserGuess_5278_ShouldReturn_True()
+		public void UserGuess_5278_ShouldReturn_FourBulls()
 		{
 			Assert.AreEqual("BBBB,", MockData.HandleUserGuess("5278"));		
 		}
@@ -31,12 +31,12 @@ namespace MsTestProject
 			Assert.AreEqual("BBB,", MockData.HandleUserGuess("5279"));
 		}
 		[TestMethod]
-		public void TwoBullsShouldReturn_BB()
+		public void UserGuess_0678_ShouldReturn_TwoBulls()
 		{
 			Assert.AreEqual("BB,", MockData.HandleUserGuess("0678"));
 		}
 		[TestMethod]
-		public void FourCowsShouldReturnCCCC()
+		public void UserGuess_8725_ShouldReturn_FourCows()
 		{
 			Assert.AreEqual(",CCCC", MockData.HandleUserGuess("8725"));
 		}
